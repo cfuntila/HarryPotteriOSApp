@@ -19,6 +19,7 @@
 		AFF4D7E22A8EA1C7000E6339 /* HPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7E12A8EA1C7000E6339 /* HPService.swift */; };
 		AFF4D7E42A8EA1E1000E6339 /* HPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7E32A8EA1E1000E6339 /* HPRequest.swift */; };
 		AFF4D7E62A8EA3ED000E6339 /* HPEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7E52A8EA3ED000E6339 /* HPEndpoint.swift */; };
+		AFF4D7EA2A8ECB63000E6339 /* HPGetCharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7E92A8ECB63000E6339 /* HPGetCharactersResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		AFF4D7E12A8EA1C7000E6339 /* HPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPService.swift; sourceTree = "<group>"; };
 		AFF4D7E32A8EA1E1000E6339 /* HPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPRequest.swift; sourceTree = "<group>"; };
 		AFF4D7E52A8EA3ED000E6339 /* HPEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPEndpoint.swift; sourceTree = "<group>"; };
+		AFF4D7E92A8ECB63000E6339 /* HPGetCharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPGetCharactersResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +93,8 @@
 		AFF4D7D12A8E9960000E6339 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AFF4D7D72A8E9A20000E6339 /* HPCharacter.swift */,
-				AFF4D7DA2A8E9A4F000E6339 /* HPSpell.swift */,
+				AFF4D7E82A8ECB3D000E6339 /* APIResponseTypes */,
+				AFF4D7E72A8ECB21000E6339 /* DataTypes */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -147,6 +149,23 @@
 				AFF4D7DF2A8E9B5B000E6339 /* HPSpellViewController.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		AFF4D7E72A8ECB21000E6339 /* DataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				AFF4D7D72A8E9A20000E6339 /* HPCharacter.swift */,
+				AFF4D7DA2A8E9A4F000E6339 /* HPSpell.swift */,
+			);
+			path = DataTypes;
+			sourceTree = "<group>";
+		};
+		AFF4D7E82A8ECB3D000E6339 /* APIResponseTypes */ = {
+			isa = PBXGroup;
+			children = (
+				AFF4D7E92A8ECB63000E6339 /* HPGetCharactersResponse.swift */,
+			);
+			path = APIResponseTypes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFF4D7EA2A8ECB63000E6339 /* HPGetCharactersResponse.swift in Sources */,
 				AFF4D7C12A8E9753000E6339 /* HPTabBarController.swift in Sources */,
 				AFF4D7E42A8EA1E1000E6339 /* HPRequest.swift in Sources */,
 				AFF4D7E62A8EA3ED000E6339 /* HPEndpoint.swift in Sources */,

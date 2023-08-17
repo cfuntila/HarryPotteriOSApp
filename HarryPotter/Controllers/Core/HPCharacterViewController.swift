@@ -15,5 +15,14 @@ final class HPCharacterViewController: UIViewController {
         super.viewDidLoad()
         title = "Characters"
         view.backgroundColor = .systemBackground
-    } 
+        
+        HPService.shared.execute(.listAllCharactersRequest, expecting: HPGetCharactersResponse.self) { result in
+            switch result {
+            case .success(let model):
+                print("Total: \(model.meta.pagination.records)")
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        } 
+    }
 }

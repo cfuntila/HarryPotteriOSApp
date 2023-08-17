@@ -8,16 +8,31 @@
 import Foundation
 
 struct HPCharacter: Codable {
-    let id: String
-    let type: String
-    let attributes: HPCharacterAttributes
+    let data: HPCharacterData
+    let meta: HPCharacterMeta
+    let links: HPCharacterLinks
+}
+
+struct HPCharacterMeta: Codable {
+    let copyright: String
+    let generated_at: String
+}
+
+struct HPCharacterLinks: Codable {
+    let `self`: String
+}
+
+struct HPCharacterData: Codable {
+    let id: String?
+    let type: String?
+    let attributes: HPCharacterAttributes?
 }
 
 struct HPCharacterAttributes: Codable {
-    let slug: String
-    let name: String
+    let slug: String?
+    let name: String?
     let born: String?
-    let died: Bool?
+    let died: String?
     let gender: String?
     let species: String?
     let height: String?
@@ -32,13 +47,12 @@ struct HPCharacterAttributes: Codable {
     let boggart: String?
     let house: String?
     let patronus: String?
-    
-    let alias_names: [String]
-    let family_members: [String]
-    let jobs: [String]
-    let romances: [String]
-    let titles: [String]
-    let wands: [String]
+    let alias_names: [String]?
+    let family_members: [String]?
+    let jobs: [String]?
+    let romances: [String]?
+    let titles: [String]?
+    let wands: [String]?
     let image: String?
     let wiki: String?
 }
