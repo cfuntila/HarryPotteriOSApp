@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		AFF4D7BD2A8E9753000E6339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7BC2A8E9753000E6339 /* AppDelegate.swift */; };
 		AFF4D7BF2A8E9753000E6339 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7BE2A8E9753000E6339 /* SceneDelegate.swift */; };
-		AFF4D7C12A8E9753000E6339 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7C02A8E9753000E6339 /* ViewController.swift */; };
-		AFF4D7C42A8E9753000E6339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF4D7C22A8E9753000E6339 /* Main.storyboard */; };
+		AFF4D7C12A8E9753000E6339 /* HPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7C02A8E9753000E6339 /* HPTabBarController.swift */; };
 		AFF4D7C62A8E9753000E6339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFF4D7C52A8E9753000E6339 /* Assets.xcassets */; };
 		AFF4D7C92A8E9753000E6339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF4D7C72A8E9753000E6339 /* LaunchScreen.storyboard */; };
+		AFF4D7D82A8E9A20000E6339 /* HPCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7D72A8E9A20000E6339 /* HPCharacter.swift */; };
+		AFF4D7DB2A8E9A4F000E6339 /* HPSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7DA2A8E9A4F000E6339 /* HPSpell.swift */; };
+		AFF4D7DE2A8E9B3B000E6339 /* HPCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7DD2A8E9B3B000E6339 /* HPCharacterViewController.swift */; };
+		AFF4D7E02A8E9B5B000E6339 /* HPSpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7DF2A8E9B5B000E6339 /* HPSpellViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AFF4D7B92A8E9753000E6339 /* HarryPotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarryPotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF4D7BC2A8E9753000E6339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFF4D7BE2A8E9753000E6339 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AFF4D7C02A8E9753000E6339 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AFF4D7C32A8E9753000E6339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AFF4D7C02A8E9753000E6339 /* HPTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPTabBarController.swift; sourceTree = "<group>"; };
 		AFF4D7C52A8E9753000E6339 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFF4D7C82A8E9753000E6339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFF4D7CA2A8E9753000E6339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFF4D7D72A8E9A20000E6339 /* HPCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCharacter.swift; sourceTree = "<group>"; };
+		AFF4D7DA2A8E9A4F000E6339 /* HPSpell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSpell.swift; sourceTree = "<group>"; };
+		AFF4D7DD2A8E9B3B000E6339 /* HPCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCharacterViewController.swift; sourceTree = "<group>"; };
+		AFF4D7DF2A8E9B5B000E6339 /* HPSpellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSpellViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,82 @@
 		AFF4D7BB2A8E9753000E6339 /* HarryPotter */ = {
 			isa = PBXGroup;
 			children = (
-				AFF4D7BC2A8E9753000E6339 /* AppDelegate.swift */,
-				AFF4D7BE2A8E9753000E6339 /* SceneDelegate.swift */,
-				AFF4D7C02A8E9753000E6339 /* ViewController.swift */,
-				AFF4D7C22A8E9753000E6339 /* Main.storyboard */,
-				AFF4D7C52A8E9753000E6339 /* Assets.xcassets */,
-				AFF4D7C72A8E9753000E6339 /* LaunchScreen.storyboard */,
+				AFF4D7D62A8E9982000E6339 /* Resources */,
+				AFF4D7D52A8E997C000E6339 /* Managers */,
+				AFF4D7D42A8E9974000E6339 /* APIClient */,
+				AFF4D7D22A8E9965000E6339 /* ViewModels */,
+				AFF4D7D32A8E996F000E6339 /* Views */,
+				AFF4D7D12A8E9960000E6339 /* Models */,
+				AFF4D7D02A8E9955000E6339 /* Controllers */,
 				AFF4D7CA2A8E9753000E6339 /* Info.plist */,
 			);
 			path = HarryPotter;
+			sourceTree = "<group>";
+		};
+		AFF4D7D02A8E9955000E6339 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AFF4D7DC2A8E9B11000E6339 /* Core */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AFF4D7D12A8E9960000E6339 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AFF4D7D72A8E9A20000E6339 /* HPCharacter.swift */,
+				AFF4D7DA2A8E9A4F000E6339 /* HPSpell.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AFF4D7D22A8E9965000E6339 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AFF4D7D32A8E996F000E6339 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AFF4D7D42A8E9974000E6339 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		AFF4D7D52A8E997C000E6339 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		AFF4D7D62A8E9982000E6339 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AFF4D7BC2A8E9753000E6339 /* AppDelegate.swift */,
+				AFF4D7BE2A8E9753000E6339 /* SceneDelegate.swift */,
+				AFF4D7C52A8E9753000E6339 /* Assets.xcassets */,
+				AFF4D7C72A8E9753000E6339 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AFF4D7DC2A8E9B11000E6339 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AFF4D7C02A8E9753000E6339 /* HPTabBarController.swift */,
+				AFF4D7DD2A8E9B3B000E6339 /* HPCharacterViewController.swift */,
+				AFF4D7DF2A8E9B5B000E6339 /* HPSpellViewController.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +200,6 @@
 			files = (
 				AFF4D7C92A8E9753000E6339 /* LaunchScreen.storyboard in Resources */,
 				AFF4D7C62A8E9753000E6339 /* Assets.xcassets in Resources */,
-				AFF4D7C42A8E9753000E6339 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFF4D7C12A8E9753000E6339 /* ViewController.swift in Sources */,
+				AFF4D7C12A8E9753000E6339 /* HPTabBarController.swift in Sources */,
+				AFF4D7E02A8E9B5B000E6339 /* HPSpellViewController.swift in Sources */,
+				AFF4D7DB2A8E9A4F000E6339 /* HPSpell.swift in Sources */,
+				AFF4D7DE2A8E9B3B000E6339 /* HPCharacterViewController.swift in Sources */,
+				AFF4D7D82A8E9A20000E6339 /* HPCharacter.swift in Sources */,
 				AFF4D7BD2A8E9753000E6339 /* AppDelegate.swift in Sources */,
 				AFF4D7BF2A8E9753000E6339 /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +223,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AFF4D7C22A8E9753000E6339 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AFF4D7C32A8E9753000E6339 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AFF4D7C72A8E9753000E6339 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +360,6 @@
 				INFOPLIST_FILE = HarryPotter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +387,6 @@
 				INFOPLIST_FILE = HarryPotter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
