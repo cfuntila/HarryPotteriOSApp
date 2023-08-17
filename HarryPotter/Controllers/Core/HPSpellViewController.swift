@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+/// Controller to show and search for Spells
 final class HPSpellViewController: UIViewController {
 
     override func viewDidLoad() {

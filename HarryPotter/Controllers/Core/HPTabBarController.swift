@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Top Controller containing tabs and their root view controllers
 final class HPTabBarController: UITabBarController {
 
     override func viewDidLoad() {
