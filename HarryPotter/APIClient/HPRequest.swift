@@ -17,10 +17,14 @@ final class HPRequest {
     }
     
     /// Desired Endpoint
-    private let endpoint: HPEndpoint
+    private var endpoint: HPEndpoint
     
     /// List of desired Path Components
-    private let pathComponents: [String]
+    private var pathComponents: [String]
+    
+    /// Query arguments for API, if any
+    private let queryParameters: [URLQueryItem]
+
     
     /// Constructed URL String
     private var urlString: String {
@@ -31,6 +35,17 @@ final class HPRequest {
         for pathComponent in pathComponents {
             string += "/" + pathComponent
         }
+        
+        if !queryParameters.isEmpty {
+            string += "?"
+            let argumentString = queryParameters.compactMap({
+                guard let value = $0.value else { return nil }
+                return "\($0.name)=\(value)"
+            }).joined(separator: "&")
+            
+            string += argumentString
+        }
+        
         return string
     }
     
@@ -50,9 +65,56 @@ final class HPRequest {
     /// - Parameters:
     ///   - endpoint: Desired Endpoint
     ///   - pathComponents: List of desired Path Components
-    init(endpoint: HPEndpoint,  pathComponents: [String] = []) {
+    init(endpoint: HPEndpoint,  pathComponents: [String] = [], queryParameters: [URLQueryItem] = []) {
         self.endpoint = endpoint
         self.pathComponents = pathComponents
+        self.queryParameters = queryParameters
+    }
+
+    convenience init?(url: URL) {
+        var urlString = url.absoluteString
+        if !urlString.contains(Constants.baseUrl) {
+            return nil
+        }
+        
+        urlString = urlString.replacingOccurrences(of: Constants.baseUrl+"/", with: "")
+        if urlString.contains("/") {
+            let components = urlString.components(separatedBy: "/")
+            if !components.isEmpty {
+                var pathComponents: [String] = []
+                if components.count > 1 {
+                    pathComponents = components
+                    pathComponents.removeFirst()
+                }
+                
+                if let endpoint = HPEndpoint(rawValue: components[0]) {
+                    self.init(endpoint: endpoint, pathComponents: pathComponents)
+                    return
+                }
+            }
+            
+        } else if urlString.contains("?") {
+            let components = urlString.components(separatedBy: "?")
+            if !components.isEmpty, components.count >= 2 {
+                let queryItemsString = components[1]
+                
+                let queryItems: [URLQueryItem ] = queryItemsString.components(separatedBy: "&").compactMap({
+                    guard $0.contains("=") else {
+                        return nil
+                    }
+                    let parts = $0.components(separatedBy: "=")
+                    let name = parts[0]
+                    let value = parts[1]
+                    return URLQueryItem(name: name, value: value)
+                })
+                
+                if let endpoint = HPEndpoint(rawValue: components[0]) {
+                    self.init(endpoint: endpoint, queryParameters: queryItems)
+                    return
+                }
+            }
+        }
+        return nil
     }
 }
 

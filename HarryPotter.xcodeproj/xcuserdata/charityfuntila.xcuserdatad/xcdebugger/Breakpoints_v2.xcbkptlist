@@ -3,4 +3,69 @@
    uuid = "2CA271EC-128B-4C1B-8F2D-6C628220740B"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F98E3D66-00C6-44DE-9C2B-64DCE3C879ED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HarryPotter/Views/HPCharacterListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "didLoadMoreCharacters(with:characters:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F98E3D66-00C6-44DE-9C2B-64DCE3C879ED - 5fa26caa24f9f0a2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HarryPotter.HPCharacterListView.didLoadMoreCharacters(with: Swift.Array&lt;Foundation.IndexPath&gt;, characters: Swift.Array&lt;HarryPotter.HPCharacterData&gt;) -&gt; ()"
+                  moduleName = "HarryPotter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charityfuntila/Desktop/desktop/HarryPotter/HarryPotter/Views/HPCharacterListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "F98E3D66-00C6-44DE-9C2B-64DCE3C879ED - 5fa26caa24f9f0ec"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HarryPotter.HPCharacterListView.didLoadMoreCharacters(with: Swift.Array&lt;Foundation.IndexPath&gt;, characters: Swift.Array&lt;HarryPotter.HPCharacterData&gt;) -&gt; ()"
+                  moduleName = "HarryPotter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charityfuntila/Desktop/desktop/HarryPotter/HarryPotter/Views/HPCharacterListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "F98E3D66-00C6-44DE-9C2B-64DCE3C879ED - 5fa26caa24f9f0a2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HarryPotter.HPCharacterListView.didLoadMoreCharacters(with: Swift.Array&lt;Foundation.IndexPath&gt;, characters: Swift.Array&lt;HarryPotter.HPCharacterData&gt;) -&gt; ()"
+                  moduleName = "HarryPotter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charityfuntila/Desktop/desktop/HarryPotter/HarryPotter/Views/HPCharacterListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "216">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -33,7 +33,7 @@ final class HPTabBarController: UITabBarController {
                                        tag: 1)
         nav2.tabBarItem = UITabBarItem(title: "Spells",
                                        image: UIImage(systemName: "pencil.and.outline"),
-                                       tag: 1)
+                                       tag: 2)
         
         setViewControllers([nav1, nav2],
                            animated: true)

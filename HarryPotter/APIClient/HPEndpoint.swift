@@ -9,7 +9,7 @@ import Foundation
 
 
 /// Represents Unique Harry Potter API Endpoints
-@frozen enum HPEndpoint: String {
+@frozen enum HPEndpoint: String, CaseIterable, Hashable {
     case characters
     case spells
 }
