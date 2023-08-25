@@ -10,13 +10,29 @@ import UIKit
 
 final class HPCharacterCollectionViewCellViewModel: Hashable, Equatable {
     let characterName: String
-    private let characterImageString: String
+    private let characterImageString: String?
     
-    init(characterName: String, characterImageString: String) {
+    init(characterName: String, characterImageString: String? = "") {
         self.characterName = characterName
         self.characterImageString = characterImageString
     }
     
+    public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
+        guard let imageString = self.characterImageString, !imageString.isEmpty else {
+            let image = UIImage(named: Constants.defaultCharacterImageName)!
+            completion(.success(image.pngData()!))
+            return
+        }
+        
+        guard let url = URL(string: imageString) else {
+            completion(.failure(URLError(.badURL)))
+            return
+        }
+        
+        HPImageManager.shared.downlaodImage(url, completion: completion)
+    }
+    
+    //MARK: - Hashing
     func hash(into hasher: inout Hasher) {
         hasher.combine(characterName)
         hasher.combine(characterImageString)
@@ -24,27 +40,5 @@ final class HPCharacterCollectionViewCellViewModel: Hashable, Equatable {
     
     static func == (lhs: HPCharacterCollectionViewCellViewModel, rhs: HPCharacterCollectionViewCellViewModel) -> Bool {
         return lhs.hashValue == rhs.hashValue
-    }
-    
-    public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
-        if self.characterImageString == "hat" {
-            let image = UIImage(named: "hat")!
-            completion(.success(image.pngData()!))
-        }
-        
-        guard let url = URL(string: characterImageString) else {
-            completion(.failure(URLError(.badURL)))
-            return
-        }
-        
-        let urlRequest = URLRequest(url: url)
-        let task = URLSession.shared.dataTask(with: urlRequest) { data, _, error in
-            guard let data = data, error == nil else {
-                completion(.failure(error ?? URLError(.badServerResponse)))
-                return
-            }
-            completion(.success(data))
-        }
-        task.resume()
     }
 }

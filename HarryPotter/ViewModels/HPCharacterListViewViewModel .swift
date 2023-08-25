@@ -22,8 +22,7 @@ final class HPCharacterListViewViewModel: NSObject {
         didSet {
             for character in characters {
                 let name = character.attributes?.name ?? ""
-                
-                let imageString = character.attributes?.image ?? "hat"
+                let imageString = character.attributes?.image
                 
                 let cellViewModel = HPCharacterCollectionViewCellViewModel(characterName: name, characterImageString: imageString)
                 

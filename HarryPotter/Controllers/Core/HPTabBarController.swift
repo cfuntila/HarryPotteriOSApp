@@ -28,10 +28,10 @@ final class HPTabBarController: UITabBarController {
         nav1.navigationBar.prefersLargeTitles = true
         nav2.navigationBar.prefersLargeTitles = true
         
-        nav1.tabBarItem = UITabBarItem(title: "Characters",
+        nav1.tabBarItem = UITabBarItem(title: Constants.charactersTitle,
                                        image: UIImage(systemName: "person"),
                                        tag: 1)
-        nav2.tabBarItem = UITabBarItem(title: "Spells",
+        nav2.tabBarItem = UITabBarItem(title: Constants.spellsTitle,
                                        image: UIImage(systemName: "pencil.and.outline"),
                                        tag: 2)
         

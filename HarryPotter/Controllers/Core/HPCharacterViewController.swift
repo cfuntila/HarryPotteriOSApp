@@ -16,7 +16,7 @@ final class HPCharacterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Characters"
+        title = Constants.charactersTitle
         view.backgroundColor = .systemBackground
         view.addSubview(characterListView)
         characterListView.delegate = self

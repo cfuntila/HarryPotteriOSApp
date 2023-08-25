@@ -92,26 +92,7 @@ extension HPCharacterListView: HPCharacterListViewViewModelDelegate {
     }
     
     func didLoadMoreCharacters(with paths: [IndexPath], characters: [HPCharacterData]) {
-        refreshCollectionView(from: paths[0][1] + 1, to: paths[99][1] - 1)
-        
+//        Fix later
+        collectionView.reloadData()
     }
-    
-    func refreshCollectionView(from: Int, to: Int) {
-           if from > to {
-               print("'from' index is greater than 'to' index")
-               return
-           }
-        collectionView.performBatchUpdates{
-               if from < to {
-                   var indexpathArray: [IndexPath] = []
-                   for index in from...to {
-                       let indexpath = IndexPath(row: index, section: 0)
-                       indexpathArray.append(indexpath)
-                   }
-                   collectionView.insertItems(at: indexpathArray)
-               } else if from == to {
-                   collectionView.insertItems(at: [IndexPath(row: from, section: 0)])
-               }
-           }
-       }
 }

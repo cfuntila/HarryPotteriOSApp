@@ -15,6 +15,6 @@ final class HPCharacterDetailViewViewModel {
     }
     
     public var title: String {
-        self.character.attributes?.name ?? "No name"
+        self.character.attributes?.name ?? Constants.defaultCharacterName
     }
 }

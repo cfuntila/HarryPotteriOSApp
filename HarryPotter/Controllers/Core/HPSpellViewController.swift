@@ -13,7 +13,7 @@ final class HPSpellViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Spells"
+        title = Constants.spellsTitle
         view.backgroundColor = .systemBackground
     }
 }
