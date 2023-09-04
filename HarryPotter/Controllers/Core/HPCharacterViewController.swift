@@ -11,23 +11,38 @@ import UIKit
 /// Controller to show and search for Characters
 final class HPCharacterViewController: UIViewController {
     
-    private let characterListView = HPCharacterListView()
+    //MARK: - Properties
     
+    private let characterListView = HPCharacterListView()
 
+    //MARK: - Lifecyles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+    }
+    
+    //MARK: - Helpers
+    
+    func configureUI() {
         title = Constants.charactersTitle
         view.backgroundColor = .systemBackground
         view.addSubview(characterListView)
         characterListView.delegate = self
-        NSLayoutConstraint.activate([
-            characterListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            characterListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            characterListView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            characterListView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
-        ])
+        addConstraints()
+    }
+    
+    func addConstraints() {
+        characterListView.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            left: view.safeAreaLayoutGuide.leftAnchor,
+            right: view.safeAreaLayoutGuide.rightAnchor
+        )
     }
 }
+
+//MARK: - Character ListView Delegate
 
 extension HPCharacterViewController: HPCharacterListViewDelegate {
     func didSelectCharacter(_ character: HPCharacterData) {
@@ -35,6 +50,4 @@ extension HPCharacterViewController: HPCharacterListViewDelegate {
         let vc = HPCharacterDetailViewController(viewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
 }

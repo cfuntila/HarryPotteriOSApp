@@ -14,8 +14,8 @@
             filePath = "HarryPotter/Views/HPCharacterListView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "didLoadMoreCharacters(with:characters:)"
             landmarkType = "7">
             <Locations>
@@ -65,6 +65,70 @@
                   offsetFromSymbolStart = "216">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "240A3BC7-BDEE-4A1A-B8C0-FDE308DEEFB1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HarryPotter/Views/Character Details/HPCharacterPhotoCollectionViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "configure(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "240A3BC7-BDEE-4A1A-B8C0-FDE308DEEFB1 - bd23a87ff3e63c75"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in HarryPotter.HPCharacterPhotoCollectionViewCell.configure(with: HarryPotter.HPCharacterPhotoCollectionViewCellViewModel) -&gt; ()"
+                  moduleName = "HarryPotter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charityfuntila/Desktop/desktop/HarryPotter/HarryPotter/Views/Character%20Details/HPCharacterPhotoCollectionViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  uuid = "240A3BC7-BDEE-4A1A-B8C0-FDE308DEEFB1 - b8d6e1cdd9342b6d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in HarryPotter.HPCharacterPhotoCollectionViewCell.configure(with: HarryPotter.HPCharacterPhotoCollectionViewCellViewModel) -&gt; ()"
+                  moduleName = "HarryPotter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charityfuntila/Desktop/desktop/HarryPotter/HarryPotter/Views/Character%20Details/HPCharacterPhotoCollectionViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E6FB899-3496-4B5D-A34B-6BCCCF16AEBE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HarryPotter/ViewModels/Character Detail/HPCharacterFamilyMemberCollectionViewCellViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "getSlug()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

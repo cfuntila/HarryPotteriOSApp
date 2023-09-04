@@ -16,6 +16,8 @@ protocol HPCharacterListViewViewModelDelegate: AnyObject {
 
 final class HPCharacterListViewViewModel: NSObject {
     
+    //MARK: - Properties
+    
     public weak var delegate: HPCharacterListViewViewModelDelegate?
     
     private var characters: [HPCharacterData] = [] {
@@ -42,6 +44,8 @@ final class HPCharacterListViewViewModel: NSObject {
     public var isLoadingMoreCharacters: Bool = false
     var isPageRefreshing:Bool = false
     var page: Int = 0
+    
+    //MARK: - Fetching Characters
     
     /// Fetch first set of characters
     func fetchCharacters() {

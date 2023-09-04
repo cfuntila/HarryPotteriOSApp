@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+/// CharacterListView Delegate Protocol
 protocol HPCharacterListViewDelegate: AnyObject {
     func didSelectCharacter(_ character: HPCharacterData)
 }
@@ -14,13 +16,14 @@ protocol HPCharacterListViewDelegate: AnyObject {
 /// View that shows list of characters and spinner
 final class HPCharacterListView: UIView {
     
+    //MARK: - Properties
+    
     private let viewModel = HPCharacterListViewViewModel()
     
     public weak var delegate: HPCharacterListViewDelegate?
     
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
-        spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.hidesWhenStopped = true
         return spinner
     }()
@@ -32,7 +35,6 @@ final class HPCharacterListView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isHidden = true
         collectionView.alpha = 0
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(HPCharacterCollectionViewCell.self, forCellWithReuseIdentifier: HPCharacterCollectionViewCell.identifier)
         collectionView.register(HPFooterLoadingCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: HPFooterLoadingCollectionReusableView.identifier)
         return collectionView
@@ -42,13 +44,17 @@ final class HPCharacterListView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemBlue
+        
         addSubviews(collectionView, spinner)
         addConstraints()
+        
         spinner.startAnimating()
+        
         viewModel.delegate = self
         viewModel.fetchCharacters()
+        
         setUpCollectionView()
     }
     
@@ -56,18 +62,12 @@ final class HPCharacterListView: UIView {
         fatalError("Unsupported")
     }
     
+    //MARK: - Helpers
+    
     private func addConstraints() {
-        NSLayoutConstraint.activate([
-            spinner.centerXAnchor.constraint(equalTo: centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: centerYAnchor),
-            spinner.widthAnchor.constraint(greaterThanOrEqualToConstant: 100),
-            spinner.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
-            
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            collectionView.leftAnchor.constraint(equalTo: leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: rightAnchor)
-        ])
+        spinner.center(inView: self)
+        spinner.setDimensions(width: 100, height: 100)
+        collectionView.anchor(top: topAnchor, bottom: bottomAnchor, left: leftAnchor, right: rightAnchor)
     }
     
     private func setUpCollectionView() {
@@ -76,6 +76,8 @@ final class HPCharacterListView: UIView {
     }
 
 }
+
+//MARK: - HPCharacterListViewViewModelDelegate
 
 extension HPCharacterListView: HPCharacterListViewViewModelDelegate {
     func didSelectCharacter(_ character: HPCharacterData) {
@@ -92,7 +94,7 @@ extension HPCharacterListView: HPCharacterListViewViewModelDelegate {
     }
     
     func didLoadMoreCharacters(with paths: [IndexPath], characters: [HPCharacterData]) {
-//        Fix later
+        //TODO: - Fix
         collectionView.reloadData()
     }
 }

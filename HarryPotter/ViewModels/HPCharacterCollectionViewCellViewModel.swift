@@ -9,13 +9,20 @@ import Foundation
 import UIKit
 
 final class HPCharacterCollectionViewCellViewModel: Hashable, Equatable {
+    
+    //MARK: - Properties
+    
     let characterName: String
     private let characterImageString: String?
+    
+    //MARK: - Init
     
     init(characterName: String, characterImageString: String? = "") {
         self.characterName = characterName
         self.characterImageString = characterImageString
     }
+    
+    //MARK: - Helpers
     
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
         guard let imageString = self.characterImageString, !imageString.isEmpty else {

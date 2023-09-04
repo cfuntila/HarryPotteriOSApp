@@ -10,6 +10,9 @@ import UIKit
 
 /// Cell to show character image and name
 final class HPCharacterCollectionViewCell: UICollectionViewCell {
+    
+    //MARK: - Properties
+    
     static let identifier = "HPCharacterCollectionViewCell"
     
     private let imageView: UIImageView = {
@@ -34,14 +37,20 @@ final class HPCharacterCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .secondarySystemBackground
-        contentView.addSubviews(imageView, nameLabel)
-        addConstraints()
-        setUpContentViewLayer()
+        setUpUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
+    }
+    
+    //MARK: - Helpers
+    
+    private func setUpUI() {
+        contentView.backgroundColor = .secondarySystemBackground
+        contentView.addSubviews(imageView, nameLabel)
+        addConstraints()
+        setUpContentViewLayer()
     }
     
     private func setUpContentViewLayer() {
@@ -65,6 +74,7 @@ final class HPCharacterCollectionViewCell: UICollectionViewCell {
             nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
     }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         setUpContentViewLayer()
