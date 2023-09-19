@@ -24,6 +24,15 @@
 		AF88AE1A2AA2A84F00667A11 /* HPCharacterPhotoCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE192AA2A84F00667A11 /* HPCharacterPhotoCollectionViewCellViewModel.swift */; };
 		AF88AE1C2AA2A86D00667A11 /* HPCharacterInfoCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE1B2AA2A86D00667A11 /* HPCharacterInfoCollectionViewCellViewModel.swift */; };
 		AF88AE1E2AA2A88600667A11 /* HPCharacterFamilyMemberCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE1D2AA2A88600667A11 /* HPCharacterFamilyMemberCollectionViewCellViewModel.swift */; };
+		AF88AE212AA6943E00667A11 /* HPSpellsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE202AA6943E00667A11 /* HPSpellsTableView.swift */; };
+		AF88AE232AA695A300667A11 /* HPSpellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE222AA695A300667A11 /* HPSpellTableViewCell.swift */; };
+		AF88AE7B2AB90A8500667A11 /* HPAPICacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE7A2AB90A8500667A11 /* HPAPICacheManager.swift */; };
+		AF88AE7D2ABA366800667A11 /* HPSpellTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE7C2ABA366800667A11 /* HPSpellTableViewCellViewModel.swift */; };
+		AF88AE7F2ABA372D00667A11 /* HPSpellTableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE7E2ABA372D00667A11 /* HPSpellTableViewViewModel.swift */; };
+		AF88AE812ABA3A8200667A11 /* HPGetSpellsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE802ABA3A8200667A11 /* HPGetSpellsResponse.swift */; };
+		AF88AE842ABA3B2B00667A11 /* HPMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE832ABA3B2B00667A11 /* HPMeta.swift */; };
+		AF88AE862ABA3B5200667A11 /* HPPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE852ABA3B5200667A11 /* HPPagination.swift */; };
+		AF88AE882ABA3B6700667A11 /* HPLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88AE872ABA3B6700667A11 /* HPLinks.swift */; };
 		AFF4D7BD2A8E9753000E6339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7BC2A8E9753000E6339 /* AppDelegate.swift */; };
 		AFF4D7BF2A8E9753000E6339 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7BE2A8E9753000E6339 /* SceneDelegate.swift */; };
 		AFF4D7C12A8E9753000E6339 /* HPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4D7C02A8E9753000E6339 /* HPTabBarController.swift */; };
@@ -57,6 +66,15 @@
 		AF88AE192AA2A84F00667A11 /* HPCharacterPhotoCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCharacterPhotoCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		AF88AE1B2AA2A86D00667A11 /* HPCharacterInfoCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCharacterInfoCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		AF88AE1D2AA2A88600667A11 /* HPCharacterFamilyMemberCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCharacterFamilyMemberCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		AF88AE202AA6943E00667A11 /* HPSpellsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSpellsTableView.swift; sourceTree = "<group>"; };
+		AF88AE222AA695A300667A11 /* HPSpellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSpellTableViewCell.swift; sourceTree = "<group>"; };
+		AF88AE7A2AB90A8500667A11 /* HPAPICacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPAPICacheManager.swift; sourceTree = "<group>"; };
+		AF88AE7C2ABA366800667A11 /* HPSpellTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSpellTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		AF88AE7E2ABA372D00667A11 /* HPSpellTableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSpellTableViewViewModel.swift; sourceTree = "<group>"; };
+		AF88AE802ABA3A8200667A11 /* HPGetSpellsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPGetSpellsResponse.swift; sourceTree = "<group>"; };
+		AF88AE832ABA3B2B00667A11 /* HPMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPMeta.swift; sourceTree = "<group>"; };
+		AF88AE852ABA3B5200667A11 /* HPPagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPPagination.swift; sourceTree = "<group>"; };
+		AF88AE872ABA3B6700667A11 /* HPLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPLinks.swift; sourceTree = "<group>"; };
 		AFF4D7B92A8E9753000E6339 /* HarryPotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarryPotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF4D7BC2A8E9753000E6339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFF4D7BE2A8E9753000E6339 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +143,25 @@
 			path = "Character Detail";
 			sourceTree = "<group>";
 		};
+		AF88AE1F2AA6941C00667A11 /* Spells List Views */ = {
+			isa = PBXGroup;
+			children = (
+				AF88AE202AA6943E00667A11 /* HPSpellsTableView.swift */,
+				AF88AE222AA695A300667A11 /* HPSpellTableViewCell.swift */,
+			);
+			path = "Spells List Views";
+			sourceTree = "<group>";
+		};
+		AF88AE822ABA3B1A00667A11 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				AF88AE832ABA3B2B00667A11 /* HPMeta.swift */,
+				AF88AE852ABA3B5200667A11 /* HPPagination.swift */,
+				AF88AE872ABA3B6700667A11 /* HPLinks.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		AFF4D7B02A8E9753000E6339 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +205,7 @@
 		AFF4D7D12A8E9960000E6339 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AF88AE822ABA3B1A00667A11 /* Other */,
 				AFF4D7E82A8ECB3D000E6339 /* APIResponseTypes */,
 				AFF4D7E72A8ECB21000E6339 /* DataTypes */,
 			);
@@ -180,6 +218,8 @@
 				AF88AE182AA2A83100667A11 /* Character Detail */,
 				AF88ADDD2A93C5B300667A11 /* HPCharacterListViewViewModel .swift */,
 				AF88ADE52A93D65E00667A11 /* HPCharacterCollectionViewCellViewModel.swift */,
+				AF88AE7E2ABA372D00667A11 /* HPSpellTableViewViewModel.swift */,
+				AF88AE7C2ABA366800667A11 /* HPSpellTableViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -187,6 +227,7 @@
 		AFF4D7D32A8E996F000E6339 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AF88AE1F2AA6941C00667A11 /* Spells List Views */,
 				AF88AE112AA2A76B00667A11 /* Character List Views */,
 				AF88AE0F2AA2A73300667A11 /* Character Details */,
 			);
@@ -207,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				AF88AE0D2A99534700667A11 /* HPImageManager.swift */,
+				AF88AE7A2AB90A8500667A11 /* HPAPICacheManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -247,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				AFF4D7E92A8ECB63000E6339 /* HPGetCharactersResponse.swift */,
+				AF88AE802ABA3A8200667A11 /* HPGetSpellsResponse.swift */,
 			);
 			path = APIResponseTypes;
 			sourceTree = "<group>";
@@ -321,10 +364,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF88AE7F2ABA372D00667A11 /* HPSpellTableViewViewModel.swift in Sources */,
+				AF88AE232AA695A300667A11 /* HPSpellTableViewCell.swift in Sources */,
 				AFF4D7EA2A8ECB63000E6339 /* HPGetCharactersResponse.swift in Sources */,
 				AF88AE082A97F19D00667A11 /* HPCharacterDetailViewViewModel.swift in Sources */,
+				AF88AE842ABA3B2B00667A11 /* HPMeta.swift in Sources */,
+				AF88AE882ABA3B6700667A11 /* HPLinks.swift in Sources */,
 				AFF4D7C12A8E9753000E6339 /* HPTabBarController.swift in Sources */,
 				AFF4D7E42A8EA1E1000E6339 /* HPRequest.swift in Sources */,
+				AF88AE812ABA3A8200667A11 /* HPGetSpellsResponse.swift in Sources */,
 				AF88AE172AA2A7F800667A11 /* HPCharacterFamilyMemberCollectionViewCell.swift in Sources */,
 				AFF4D7E62A8EA3ED000E6339 /* HPEndpoint.swift in Sources */,
 				AFF4D7E02A8E9B5B000E6339 /* HPSpellViewController.swift in Sources */,
@@ -332,12 +380,15 @@
 				AF88ADE02A93C61A00667A11 /* HPCharacterListView.swift in Sources */,
 				AF88ADE22A93CD7600667A11 /* Extentions.swift in Sources */,
 				AF88AE0E2A99534700667A11 /* HPImageManager.swift in Sources */,
+				AF88AE212AA6943E00667A11 /* HPSpellsTableView.swift in Sources */,
+				AF88AE7D2ABA366800667A11 /* HPSpellTableViewCellViewModel.swift in Sources */,
 				AF88AE152AA2A7CB00667A11 /* HPCharacterInfoCollectionViewCell.swift in Sources */,
 				AF88AE1A2AA2A84F00667A11 /* HPCharacterPhotoCollectionViewCellViewModel.swift in Sources */,
 				AF88AE1E2AA2A88600667A11 /* HPCharacterFamilyMemberCollectionViewCellViewModel.swift in Sources */,
 				AF88AE0A2A97F7F800667A11 /* HPFooterLoadingCollectionReusableView.swift in Sources */,
 				AFF4D7DB2A8E9A4F000E6339 /* HPSpell.swift in Sources */,
 				AF88AE0C2A994F9800667A11 /* Constants.swift in Sources */,
+				AF88AE862ABA3B5200667A11 /* HPPagination.swift in Sources */,
 				AF88ADE42A93D3C600667A11 /* HPCharacterCollectionViewCell.swift in Sources */,
 				AFF4D7E22A8EA1C7000E6339 /* HPService.swift in Sources */,
 				AFF4D7DE2A8E9B3B000E6339 /* HPCharacterViewController.swift in Sources */,
@@ -349,6 +400,7 @@
 				AF88AE132AA2A7AC00667A11 /* HPCharacterPhotoCollectionViewCell.swift in Sources */,
 				AF88ADE62A93D65E00667A11 /* HPCharacterCollectionViewCellViewModel.swift in Sources */,
 				AF88AE062A97F17C00667A11 /* HPCharacterDetailView.swift in Sources */,
+				AF88AE7B2AB90A8500667A11 /* HPAPICacheManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

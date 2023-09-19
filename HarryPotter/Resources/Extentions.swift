@@ -17,7 +17,6 @@ extension UIView {
         }
     }
 
-
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 bottom: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
@@ -92,6 +91,10 @@ extension UIView {
         anchor(top: view.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor,
                 right: view.rightAnchor)
     }
+    
+    func roundCorners() {
+        layer.cornerRadius = 8
+    }
 }
 
 // MARK: - UIColor
@@ -100,6 +103,21 @@ extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
+    
+    // Gryffindor Red
+    static let gryffindorRed = UIColor.rgb(red: 115, green: 8, blue: 0)
+
+    // Slytherin Green
+    static let slytherinGreen = UIColor.rgb(red: 0, green: 51, blue: 0)
+
+    // Ravenclaw Blue
+    static let ravenclawBlue = UIColor.rgb(red: 0, green: 32, blue: 91)
+
+    // Hufflepuff Yellow
+    static let hufflepuffYellow = UIColor.rgb(red: 255, green: 204, blue: 0)
+
+    // Hogwarts Castle Grey
+    static let hogwartsGrey = UIColor.rgb(red: 87, green: 87, blue: 87)
 }
 
 //MARK: - String

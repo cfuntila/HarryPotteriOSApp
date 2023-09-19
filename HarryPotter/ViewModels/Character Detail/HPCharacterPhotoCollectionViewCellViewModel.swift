@@ -10,8 +10,8 @@ import UIKit
 final class HPCharacterPhotoCollectionViewCellViewModel {
     private var characterImageString: String?
     
-    init(characterImageString: String? = "") {
-        self.characterImageString = characterImageString
+    init(characterImageString: String?) {
+        self.characterImageString = characterImageString ?? ""
     }
     
     //MARK: - Helpers

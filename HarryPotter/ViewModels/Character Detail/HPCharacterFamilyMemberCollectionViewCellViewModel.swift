@@ -16,35 +16,30 @@ final class HPCharacterFamilyMemberCollectionViewCellViewModel {
         self.familyMemberString = familyMemberString
     }
     
-    public func getSlug() -> String {
-        let relationshipString = familyMemberString.lowercased()
-        let relationshipComponents = relationshipString.components(separatedBy: "(")
-        var relationshipType = ""
-        if relationshipComponents.count > 1 {
-            var relationshipTypeComponents = relationshipComponents[1].components(separatedBy: ")")
-            
-            if let last = relationshipTypeComponents.last, last.contains("†") {
-                relationshipTypeComponents.removeLast()
+    func extractNameAndRelationship(from input: String) -> [String] {
+        do {
+            let regex = try NSRegularExpression(pattern: "^(.*?)\\s*\\((.*?)\\)\\s*†?$")
+            if let match = regex.firstMatch(in: input, range: NSRange(input.startIndex..., in: input)) {
+                let nameRange = Range(match.range(at: 1), in: input)!
+                let relationshipRange = Range(match.range(at: 2), in: input)!
+
+                let name = String(input[nameRange]).trimmingCharacters(in: .whitespacesAndNewlines)
+                let relationship = String(input[relationshipRange]).trimmingCharacters(in: .whitespacesAndNewlines)
+
+                return [name, relationship]
             }
-            
-            relationshipType = relationshipTypeComponents[0]
+        } catch {
+            print("Error: \(error)")
         }
-        
-        
-        
-        var slug = ""
-        
-        let names = relationshipComponents[0].trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: " ")
-        for name in names {
-            slug += name
-            slug += "-"
-        }
-        slug.removeLast()
-        
-        print("Slug: " + slug)
-        print("relationship type: " + relationshipType)
-        print()
-        
+
+        // If no match was found, return the original string as is
+        return [input]
+    }
+    
+    func getSlug() -> String {
+        let name = extractNameAndRelationship(from: familyMemberString)[0]
+        let trimmedName = name.trimmingCharacters(in: .whitespaces)
+        let slug = trimmedName.replacingOccurrences(of: " ", with: "-").lowercased()
         return slug
     }
 }

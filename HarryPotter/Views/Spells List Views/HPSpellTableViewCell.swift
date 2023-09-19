@@ -1,21 +1,20 @@
 //
-//  HPCharacterCollectionViewCell.swift
+//  HPSpellTableViewCell.swift
 //  HarryPotter
 //
-//  Created by Charity Funtila on 8/21/23.
+//  Created by Charity Funtila on 9/4/23.
 //
 
 import UIKit
 
-
-/// Cell to show character image and name
-final class HPCharacterCollectionViewCell: UICollectionViewCell {
+class HPSpellTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    static let identifier = "HPCharacterCollectionViewCell"
+    static let identifier = "HPSpellTableViewCell"
     
-    private let imageView: UIImageView = {
+    //MARK: - Views
+    private let spellImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +22,7 @@ final class HPCharacterCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let nameLabel: UILabel = {
+    private let spellNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .medium)
         label.numberOfLines = 0
@@ -35,11 +34,11 @@ final class HPCharacterCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Init
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpUI()
     }
-    
+        
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
     }
@@ -48,7 +47,7 @@ final class HPCharacterCollectionViewCell: UICollectionViewCell {
     
     private func setUpUI() {
         contentView.backgroundColor = .secondarySystemBackground
-        contentView.addSubviews(imageView, nameLabel)
+        contentView.addSubviews(spellImageView, spellNameLabel)
         addConstraints()
         setUpContentViewLayer()
     }
@@ -62,11 +61,11 @@ final class HPCharacterCollectionViewCell: UICollectionViewCell {
     }
     
     private func addConstraints() {
-        imageView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 5, paddingLeft: 5, paddingRight: 5)
-        nameLabel.anchor(top: imageView.bottomAnchor, bottom: contentView.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 5, paddingLeft: 8, paddingBottom: 5, paddingRight: 8)
+        spellImageView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 5, paddingLeft: 5, paddingRight: 5)
+        spellNameLabel.anchor(top: spellImageView.bottomAnchor, bottom: contentView.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 5, paddingLeft: 8, paddingBottom: 5, paddingRight: 8)
         
         NSLayoutConstraint.activate([
-            nameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
+            spellNameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
         ])
     }
     
@@ -77,12 +76,12 @@ final class HPCharacterCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.image = nil
-        nameLabel.text = nil
+        spellImageView.image = nil
+        spellNameLabel.text = nil
     }
     
-    public func configure(with viewModel: HPCharacterCollectionViewCellViewModel) {
-        nameLabel.text = viewModel.characterName
+    public func configure(with viewModel: HPSpellTableViewCellViewModel) {
+        spellNameLabel.text = viewModel.spellName
         
         viewModel.fetchImage(completion: { [weak self] result in
             switch result {
@@ -92,13 +91,10 @@ final class HPCharacterCollectionViewCell: UICollectionViewCell {
                 case .success(let data):
                     DispatchQueue.main.async {
                         let image = UIImage(data: data)
-                        self?.imageView.image = image
+                        self?.spellImageView.image = image
                     }
             }
         })
     }
+
 }
-
-
-
-

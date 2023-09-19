@@ -55,6 +55,8 @@ final class HPCharacterDetailViewController: UIViewController{
         )
     }
     
+    //MARK: - Family Memeber Selection
+    
     func didSelectCharacter(_ character: HPCharacterData) {
         let viewModel = HPCharacterDetailViewViewModel(with: character)
         let vc = HPCharacterDetailViewController(viewModel)
@@ -63,7 +65,6 @@ final class HPCharacterDetailViewController: UIViewController{
     
     private func showCharacter(with slug: String) {
         let request = HPRequest(endpoint: .characters, pathComponents: [slug])
-        print(request.url!.absoluteString)
         HPService.shared.execute(request, expecting: HPCharacter.self) { [weak self] result in
             switch result {
             case .success(let model):
@@ -80,7 +81,6 @@ final class HPCharacterDetailViewController: UIViewController{
     private func presentFamilyMember(viewModel: HPCharacterFamilyMemberCollectionViewCellViewModel) {
         let slug = viewModel.getSlug()
         showCharacter(with: slug)
-        print("Selected a cell")
     }
 }
 
@@ -89,16 +89,12 @@ final class HPCharacterDetailViewController: UIViewController{
 extension HPCharacterDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sectionType = viewModel.sections[indexPath.section]
-        
         switch sectionType {
-        case .photo(let viewModel):
-            print("selected photo!")
-        case .information(let viewModels):
-            print("selected info!")
+        case .photo, .information:
+            break
         case .familyMembers(let viewModels):
             collectionView.deselectItem(at: indexPath, animated: true)
             presentFamilyMember(viewModel: viewModels[indexPath.row])
-            print("selected family member!")
         }
     }
 }
@@ -131,6 +127,7 @@ extension HPCharacterDetailViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPCharacterPhotoCollectionViewCell.identifier, for: indexPath) as? HPCharacterPhotoCollectionViewCell
             if let cell = cell {
                 cell.configure(with: viewModel)
+                cell.roundCorners()
                 return cell
             } else {
                 fatalError("Unsupported cell")
@@ -140,6 +137,7 @@ extension HPCharacterDetailViewController: UICollectionViewDataSource {
             if let cell = cell {
                 cell.configure(with: viewModels[indexPath.row])
                 cell.backgroundColor = .tertiarySystemBackground
+                cell.roundCorners()
                 return cell
             } else {
                 fatalError("Unsupported cell")
@@ -149,6 +147,7 @@ extension HPCharacterDetailViewController: UICollectionViewDataSource {
             if let cell = cell {
                 cell.backgroundColor = .tertiarySystemBackground
                 cell.configure(with: viewModels[indexPath.row])
+                cell.roundCorners()
                 return cell
             } else {
                 fatalError("Unsupported cell")

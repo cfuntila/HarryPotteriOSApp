@@ -17,7 +17,7 @@ final class HPRequest {
     }
     
     /// Desired Endpoint
-    private var endpoint: HPEndpoint
+    public var endpoint: HPEndpoint
     
     /// List of desired Path Components
     private var pathComponents: [String]
@@ -120,4 +120,5 @@ final class HPRequest {
 
 extension HPRequest {
     static let listAllCharactersRequest = HPRequest(endpoint: .characters)
+    static let listAllSpellsRequest = HPRequest(endpoint: .spells)
 }

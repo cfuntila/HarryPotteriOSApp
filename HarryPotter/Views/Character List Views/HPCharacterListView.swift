@@ -8,7 +8,7 @@
 import UIKit
 
 
-/// CharacterListView Delegate Protocol
+/// CharacterListViewDelegate Delegate Protocol
 protocol HPCharacterListViewDelegate: AnyObject {
     func didSelectCharacter(_ character: HPCharacterData)
 }
@@ -29,14 +29,21 @@ final class HPCharacterListView: UIView {
     }()
     
     private let collectionView: UICollectionView = {
+        // Create a UICollectionViewFlowLayout with vertical scrolling and custom section insets.
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        
+        // Create the main UICollectionView instance.
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+            
+        // Initially hide and set the alpha to 0 for later animation.
         collectionView.isHidden = true
         collectionView.alpha = 0
-        collectionView.register(HPCharacterCollectionViewCell.self, forCellWithReuseIdentifier: HPCharacterCollectionViewCell.identifier)
-        collectionView.register(HPFooterLoadingCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: HPFooterLoadingCollectionReusableView.identifier)
+        
+        // Register custom UICollectionViewCell and a supplementary view for loading.
+        collectionView.registerCells()
+        
         return collectionView
     }()
     
@@ -96,5 +103,22 @@ extension HPCharacterListView: HPCharacterListViewViewModelDelegate {
     func didLoadMoreCharacters(with paths: [IndexPath], characters: [HPCharacterData]) {
         //TODO: - Fix
         collectionView.reloadData()
+    }
+}
+
+
+//MARK: - UICollectionView Extension
+private extension UICollectionView {
+    // Register custom cell and supplementary view identifiers.
+    func registerCells() {
+        // Register the custom character cell for reuse.
+        register(HPCharacterCollectionViewCell.self, forCellWithReuseIdentifier: HPCharacterCollectionViewCell.identifier)
+        
+        // Register the custom footer loading supplementary view.
+        register(
+            HPFooterLoadingCollectionReusableView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+            withReuseIdentifier: HPFooterLoadingCollectionReusableView.identifier
+        )
     }
 }

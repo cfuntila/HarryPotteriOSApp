@@ -37,10 +37,10 @@ final class HPCharacterListViewViewModel: NSObject {
     
     private var apiInfo: HPLinks? = nil
     private var cellViewModels: [HPCharacterCollectionViewCellViewModel] = []
+    
     public var shouldShowLoadMoreIndicator: Bool {
         return apiInfo?.next != nil
     }
-    
     public var isLoadingMoreCharacters: Bool = false
     var isPageRefreshing:Bool = false
     var page: Int = 0
@@ -158,7 +158,6 @@ extension HPCharacterListViewViewModel: UICollectionViewDelegate {
         collectionView.deselectItem(at: indexPath, animated: true)
         let character = characters[indexPath.row]
         delegate?.didSelectCharacter(character)
-        print("Selected a cell")
     }
 }
 

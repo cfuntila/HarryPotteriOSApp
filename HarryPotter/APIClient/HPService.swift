@@ -14,6 +14,8 @@ final class HPService {
     /// Shared Singleton instance
     static let shared = HPService()
     
+    private let cacheManager = HPAPICacheManager()
+    
     enum HPServiceError: Error {
         case failedToCreateRequest
         case failedToGetData
@@ -34,12 +36,24 @@ final class HPService {
         expecting type: T.Type,
         completion: @escaping (Result<T, Error>) -> Void
     ){
+        if let cachedData = cacheManager.cachedResponse(for: request.endpoint, url: request.url) {
+            // Decode the response
+            do {
+                print("using cached api response")
+                let result = try JSONDecoder().decode(type.self, from: cachedData)
+                completion(.success(result))
+            } catch {
+                completion(.failure(error))
+            }
+            return
+        }
+        
         guard let urlRequest = self.get_urlRequest(from: request) else {
             completion(.failure(HPServiceError.failedToCreateRequest))
             return
         }
         
-        let task = URLSession.shared.dataTask(with: urlRequest) { data, _, error in
+        let task = URLSession.shared.dataTask(with: urlRequest) { [weak self] data, _, error in
             guard let data = data, error == nil else {
                 completion(.failure(error ?? HPServiceError.failedToGetData))
                 return
@@ -48,6 +62,7 @@ final class HPService {
             // Decode the response
             do {
                 let result = try JSONDecoder().decode(type.self, from: data)
+                self?.cacheManager.setCache(for: request.endpoint, url: request.url, data: data)
                 completion(.success(result))
             } catch {
                 completion(.failure(error))

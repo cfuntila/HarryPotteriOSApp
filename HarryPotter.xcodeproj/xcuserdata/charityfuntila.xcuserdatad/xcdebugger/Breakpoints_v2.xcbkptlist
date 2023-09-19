@@ -118,16 +118,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8E6FB899-3496-4B5D-A34B-6BCCCF16AEBE"
-            shouldBeEnabled = "No"
+            uuid = "E5BB4E10-9156-44F2-A1CA-56866D399421"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HarryPotter/ViewModels/Character Detail/HPCharacterFamilyMemberCollectionViewCellViewModel.swift"
+            filePath = "HarryPotter/Views/Spells List Views/HPSpellsTableView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "getSlug()"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "didLoadInitialSpells()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "151AA800-6397-4D3F-924C-78E537C767AE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HarryPotter/ViewModels/HPSpellTableViewViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "fetchSpells()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

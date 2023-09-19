@@ -33,11 +33,15 @@ final class HPCharacterFamilyMemberCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        nameLabel.text = nil
     }
     
     //MARK: - Helpers
     
     private func addConstraints() {
+        contentView.roundCorners()
+        nameLabel.roundCorners()
+        
         nameLabel.anchor(top: contentView.topAnchor, bottom: contentView.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingLeft: 10)
     }
     

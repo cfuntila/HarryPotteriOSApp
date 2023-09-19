@@ -22,8 +22,15 @@ final class HPCharacterInfoCollectionViewCell: UICollectionViewCell {
         label.backgroundColor = UIColor(named: "Gryffindor")
         label.textAlignment = .center
         label.sizeToFit()
-        label.setDimensions(width: 100, height: 50)
         return label
+    }()
+    
+    private let titleContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .tertiarySystemBackground
+        view.roundCorners()
+        view.clipsToBounds = true
+        return view
     }()
     
     private let valueLabel: UILabel = {
@@ -35,20 +42,13 @@ final class HPCharacterInfoCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let infoView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        return stackView
-    }()
-
-    
     //MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews(infoView)
-        infoView.addSubviews(titleLabel, valueLabel)
-        setUpContentViewLayer()
+        contentView.roundCorners()
+        contentView.addSubviews(titleContainer, valueLabel)
+        titleContainer.addSubview(titleLabel)
         addConstraints()
     }
     
@@ -58,31 +58,25 @@ final class HPCharacterInfoCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        titleLabel.text = nil
+        valueLabel.text = nil
     }
     
     //MARK: - Helpers
     
-    private func setUpContentViewLayer() {
-        contentView.layer.cornerRadius = 10
-        contentView.layer.shadowRadius = 4
-        contentView.layer.shadowOpacity = 0.3
-        contentView.layer.shadowOffset = CGSize(width: -4, height: 4)
-        contentView.layer.shadowColor = UIColor.secondaryLabel.cgColor
-    }
-    
     private func addConstraints() {
-        infoView.anchor(
-            top: topAnchor,
-            bottom: bottomAnchor,
-            left: leftAnchor,
-            right: rightAnchor
+        titleContainer.setDimensions(width: contentView.frame.width, height: 50)
+        titleContainer.anchor(
+            top: contentView.topAnchor,
+            left: contentView.leftAnchor,
+            right: contentView.rightAnchor
         )
         
         titleLabel.anchor(
-            top: infoView.topAnchor,
-            bottom: valueLabel.topAnchor,
-            left: infoView.leftAnchor,
-            right: infoView.rightAnchor,
+            top: titleContainer.topAnchor,
+            bottom: titleContainer.bottomAnchor,
+            left: titleContainer.leftAnchor,
+            right: titleContainer.rightAnchor,
             paddingTop: 0,
             paddingLeft: 0,
             paddingBottom: 0,
@@ -90,22 +84,15 @@ final class HPCharacterInfoCollectionViewCell: UICollectionViewCell {
         )
 
         valueLabel.anchor(
-            top: titleLabel.bottomAnchor,
-            bottom: infoView.bottomAnchor,
-            left: infoView.leftAnchor,
-            right: infoView.rightAnchor,
+            top: titleContainer.bottomAnchor,
+            bottom: contentView.bottomAnchor,
+            left: contentView.leftAnchor,
+            right: contentView.rightAnchor,
             paddingTop: 10,
             paddingLeft: 10,
             paddingBottom: 10,
             paddingRight: 10
         )
-        
-        
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        setUpContentViewLayer()
     }
     
     public func configure(with viewModel: HPCharacterInfoCollectionViewCellViewModel) {
