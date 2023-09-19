@@ -12,7 +12,7 @@ import UIKit
 final class HPSpellViewController: UIViewController {
     
     //MARK: - Views
-    let spellsTableView = HPSpellsTableView()
+    let spellsListView = HPSpellListView()
     
     //MARK: - Lifecyle
 
@@ -26,12 +26,12 @@ final class HPSpellViewController: UIViewController {
     private func configureUI() {
         title = Constants.spellsTitle
         view.backgroundColor = .systemBackground
-        view.addSubview(spellsTableView)
+        view.addSubview(spellsListView)
         addConstraints()
     }
     
     private func addConstraints() {
-        spellsTableView.anchor(
+        spellsListView.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
             bottom: view.safeAreaLayoutGuide.bottomAnchor,
             left: view.safeAreaLayoutGuide.leftAnchor,

@@ -26,7 +26,7 @@ final class HPCharacterListViewViewModel: NSObject {
                 let name = character.attributes?.name ?? ""
                 let imageString = character.attributes?.image
                 
-                let cellViewModel = HPCharacterCollectionViewCellViewModel(characterName: name, characterImageString: imageString)
+                let cellViewModel = HPCollectionViewCellViewModel(name: name, imageString: imageString)
                 
                 if !cellViewModels.contains(cellViewModel) {
                     cellViewModels.append(cellViewModel)
@@ -36,7 +36,8 @@ final class HPCharacterListViewViewModel: NSObject {
     }
     
     private var apiInfo: HPLinks? = nil
-    private var cellViewModels: [HPCharacterCollectionViewCellViewModel] = []
+    private var cellViewModels: [HPCollectionViewCellViewModel] = []
+
     
     public var shouldShowLoadMoreIndicator: Bool {
         return apiInfo?.next != nil
@@ -118,7 +119,7 @@ extension HPCharacterListViewViewModel: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPCharacterCollectionViewCell.identifier, for: indexPath) as? HPCharacterCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPCollectionViewCell.identifier, for: indexPath) as? HPCollectionViewCell else {
             fatalError("Unable to create cell")
         }
         cell.configure(with: cellViewModels[indexPath.row])

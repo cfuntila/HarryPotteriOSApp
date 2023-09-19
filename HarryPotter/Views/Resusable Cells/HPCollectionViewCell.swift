@@ -1,23 +1,21 @@
 //
-//  HPCharacterCollectionViewCell.swift
+//  HPCollectionViewCell.swift
 //  HarryPotter
 //
-//  Created by Charity Funtila on 8/21/23.
+//  Created by Charity Funtila on 9/19/23.
 //
 
 import UIKit
 
-
-/// Cell to show character image and name
-final class HPCharacterCollectionViewCell: UICollectionViewCell {
+final class HPCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
     
-    static let identifier = "HPCharacterCollectionViewCell"
+    static let identifier = "HPCollectionViewCell"
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         return imageView
@@ -81,8 +79,8 @@ final class HPCharacterCollectionViewCell: UICollectionViewCell {
         nameLabel.text = nil
     }
     
-    public func configure(with viewModel: HPCharacterCollectionViewCellViewModel) {
-        nameLabel.text = viewModel.characterName
+    public func configure(with viewModel: HPCollectionViewCellViewModel) {
+        nameLabel.text = viewModel.name
         
         viewModel.fetchImage(completion: { [weak self] result in
             switch result {
@@ -98,7 +96,4 @@ final class HPCharacterCollectionViewCell: UICollectionViewCell {
         })
     }
 }
-
-
-
 

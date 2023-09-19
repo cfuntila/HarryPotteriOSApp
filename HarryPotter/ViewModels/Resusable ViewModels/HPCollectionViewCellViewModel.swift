@@ -1,31 +1,31 @@
 //
-//  HPSpellTableViewCellViewModel.swift
+//  HPCollectionViewCellViewModel.swift
 //  HarryPotter
 //
 //  Created by Charity Funtila on 9/19/23.
 //
 
-import Foundation
 import UIKit
 
-final class HPSpellTableViewCellViewModel: Hashable, Equatable {
+final class HPCollectionViewCellViewModel: Hashable, Equatable {
     
     //MARK: - Properties
     
-    let spellName: String
-    private let spellImageString: String?
+    let name: String
+    private let imageString: String?
     
     //MARK: - Init
     
-    init(spellName: String, spellImageString: String? = "") {
-        self.spellName = spellName
-        self.spellImageString = spellImageString
+    init(name: String, imageString: String? = "") {
+        self.name = name
+        self.imageString = imageString
     }
     
     //MARK: - Helpers
     
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let imageString = self.spellImageString, !imageString.isEmpty else {
+        guard let imageString = self.imageString, !imageString.isEmpty else {
+            //TODO: change defaultCharactrrtImageName to just defaultImageName
             let image = UIImage(named: Constants.defaultCharacterImageName)!
             completion(.success(image.pngData()!))
             return
@@ -41,11 +41,11 @@ final class HPSpellTableViewCellViewModel: Hashable, Equatable {
     
     //MARK: - Hashing
     func hash(into hasher: inout Hasher) {
-        hasher.combine(spellName)
-        hasher.combine(spellImageString)
+        hasher.combine(name)
+        hasher.combine(imageString)
     }
     
-    static func == (lhs: HPSpellTableViewCellViewModel, rhs: HPSpellTableViewCellViewModel) -> Bool {
+    static func == (lhs: HPCollectionViewCellViewModel, rhs: HPCollectionViewCellViewModel) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
 }

@@ -1,26 +1,17 @@
 //
-//  HPCharacterListView.swift
+//  HPSpellListView.swift
 //  HarryPotter
 //
-//  Created by Charity Funtila on 8/21/23.
+//  Created by Charity Funtila on 9/19/23.
 //
 
 import UIKit
 
-
-/// CharacterListViewDelegate Delegate Protocol
-protocol HPCharacterListViewDelegate: AnyObject {
-    func didSelectCharacter(_ character: HPCharacterData)
-}
-
-/// View that shows list of characters and spinner
-final class HPCharacterListView: UIView {
+final class HPSpellListView: UIView {
     
     //MARK: - Properties
     
-    private let viewModel = HPCharacterListViewViewModel()
-    
-    public weak var delegate: HPCharacterListViewDelegate?
+    private let viewModel = HPSpellListViewViewModel()
     
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
@@ -60,7 +51,7 @@ final class HPCharacterListView: UIView {
         spinner.startAnimating()
         
         viewModel.delegate = self
-        viewModel.fetchCharacters()
+        viewModel.fetchSpells()
         
         setUpCollectionView()
     }
@@ -84,14 +75,11 @@ final class HPCharacterListView: UIView {
 
 }
 
-//MARK: - HPCharacterListViewViewModelDelegate
 
-extension HPCharacterListView: HPCharacterListViewViewModelDelegate {
-    func didSelectCharacter(_ character: HPCharacterData) {
-        delegate?.didSelectCharacter(character)        
-    }
-    
-    func didLoadInitialCharacters() {
+//MARK: - HPSpellListViewViewModelDelegate
+
+extension HPSpellListView: HPSpellListViewViewModelDelegate {
+    func didLoadInitialSpells() {
         spinner.stopAnimating()
         collectionView.isHidden = false
         collectionView.reloadData()
@@ -99,11 +87,7 @@ extension HPCharacterListView: HPCharacterListViewViewModelDelegate {
             self.collectionView.alpha = 1
         }
     }
-    
-    func didLoadMoreCharacters(with paths: [IndexPath], characters: [HPCharacterData]) {
-        //TODO: - Fix
-        collectionView.reloadData()
-    }
+   
 }
 
 
@@ -113,12 +97,5 @@ private extension UICollectionView {
     func registerCells() {
         // Register the custom character cell for reuse.
         register(HPCollectionViewCell.self, forCellWithReuseIdentifier: HPCollectionViewCell.identifier)
-        
-        // Register the custom footer loading supplementary view.
-        register(
-            HPFooterLoadingCollectionReusableView.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-            withReuseIdentifier: HPFooterLoadingCollectionReusableView.identifier
-        )
     }
 }
