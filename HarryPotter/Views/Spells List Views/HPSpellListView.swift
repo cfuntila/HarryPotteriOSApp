@@ -7,9 +7,16 @@
 
 import UIKit
 
+/// SpellListViewDelegate Delegate Protocol
+protocol HPSpellListViewDelegate: AnyObject {
+    func didSelectSpell(_ spell: HPSpell)
+}
+
 final class HPSpellListView: UIView {
     
     //MARK: - Properties
+    
+    public weak var delegate: HPSpellListViewDelegate?
     
     private let viewModel = HPSpellListViewViewModel()
     
@@ -79,6 +86,14 @@ final class HPSpellListView: UIView {
 //MARK: - HPSpellListViewViewModelDelegate
 
 extension HPSpellListView: HPSpellListViewViewModelDelegate {
+    func didSelectSpell(_ spell: HPSpell) {
+        delegate?.didSelectSpell(spell)
+    }
+    
+    func didLoadMoreSpells(with paths: [IndexPath], spells: [HPSpell]) {
+        collectionView.reloadData()
+    }
+    
     func didLoadInitialSpells() {
         spinner.stopAnimating()
         collectionView.isHidden = false
@@ -87,7 +102,6 @@ extension HPSpellListView: HPSpellListViewViewModelDelegate {
             self.collectionView.alpha = 1
         }
     }
-   
 }
 
 
@@ -97,5 +111,12 @@ private extension UICollectionView {
     func registerCells() {
         // Register the custom character cell for reuse.
         register(HPCollectionViewCell.self, forCellWithReuseIdentifier: HPCollectionViewCell.identifier)
+        
+        // Register the custom footer loading supplementary view.
+        register(
+            HPFooterLoadingCollectionReusableView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+            withReuseIdentifier: HPFooterLoadingCollectionReusableView.identifier
+        )
     }
 }

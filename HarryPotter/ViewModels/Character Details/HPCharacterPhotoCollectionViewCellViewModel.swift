@@ -28,6 +28,6 @@ final class HPCharacterPhotoCollectionViewCellViewModel {
             return
         }
         
-        HPImageManager.shared.downlaodImage(url, completion: completion)
+        HPImageManager.shared.downloadImage(url, completion: completion)
     }
 }

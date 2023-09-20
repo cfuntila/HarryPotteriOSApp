@@ -12,7 +12,7 @@ final class HPCollectionViewCellViewModel: Hashable, Equatable {
     //MARK: - Properties
     
     let name: String
-    private let imageString: String?
+    public let imageString: String?
     
     //MARK: - Init
     
@@ -25,6 +25,7 @@ final class HPCollectionViewCellViewModel: Hashable, Equatable {
     
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
         guard let imageString = self.imageString, !imageString.isEmpty else {
+            
             //TODO: change defaultCharactrrtImageName to just defaultImageName
             let image = UIImage(named: Constants.defaultCharacterImageName)!
             completion(.success(image.pngData()!))
@@ -36,7 +37,7 @@ final class HPCollectionViewCellViewModel: Hashable, Equatable {
             return
         }
         
-        HPImageManager.shared.downlaodImage(url, completion: completion)
+        HPImageManager.shared.downloadImage(url, completion: completion)
     }
     
     //MARK: - Hashing

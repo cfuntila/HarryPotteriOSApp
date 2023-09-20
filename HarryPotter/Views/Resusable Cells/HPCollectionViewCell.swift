@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftGifOrigin
 
 final class HPCollectionViewCell: UICollectionViewCell {
     
@@ -89,8 +90,16 @@ final class HPCollectionViewCell: UICollectionViewCell {
                     break
                 case .success(let data):
                     DispatchQueue.main.async {
-                        let image = UIImage(data: data)
-                        self?.imageView.image = image
+                            // Check if the data is a GIF.
+                        let isGif = viewModel.imageString?.lowercased().hasSuffix(".gif") ?? false
+
+                        if isGif {
+                            // Use SwiftGif to display the GIF.
+                            self?.imageView.image = UIImage.gif(data: data)
+                        } else {
+                            // Use the regular UIImage for non-GIF images.
+                            self?.imageView.image = UIImage(data: data)
+                        }
                     }
             }
         })

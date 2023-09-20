@@ -5,8 +5,7 @@
 //  Created by Charity Funtila on 8/25/23.
 //
 
-import Foundation
-
+import UIKit
 
 /// Manages images for the app
 final class HPImageManager {
@@ -21,27 +20,59 @@ final class HPImageManager {
     /// - Parameters:
     ///   - url: Image URL
     ///   - completion: Callback
-    public func downlaodImage(_ url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
-        
-        if let data = imageDataCache.object(forKey: url.absoluteString as NSString) {
-            completion(.success(data as Data))
+    public func downloadImage(_ url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+        // Check if the image data is already cached
+        if let cachedData = imageDataCache.object(forKey: url.absoluteString as NSString) {
+            completion(.success(cachedData as Data))
             return
         }
         
+        // Create a URLRequest
         let urlRequest = URLRequest(url: url)
+        
+        // Perform a data task
         let task = URLSession.shared.dataTask(with: urlRequest) { [weak self] data, _, error in
-            guard let data = data, error == nil else {
-                completion(.failure(error ?? URLError(.badServerResponse)))
+            // Handle any network errors
+            if let error = error {
+                completion(.failure(error))
                 return
             }
             
-            let key = url.absoluteString as NSString
-            let value = data as NSData
+            // Check if the received image data is a GIF
+            let isGif = url.absoluteString.lowercased().hasSuffix(".gif")
             
-            self?.imageDataCache.setObject(value, forKey: key)
-            completion(.success(data))
+            // Process the image data
+            if let imageData = data {
+                if isGif {
+                    // If it's a GIF, return the data as is
+                    completion(.success(imageData))
+                } else if let image = UIImage(data: imageData) {
+                    // If it's not a GIF, check if it's a valid image
+                    if let pngData = image.pngData() {
+                        // If it's PNG, return PNG data
+                        self?.imageDataCache.setObject(imageData as NSData, forKey: url.absoluteString as NSString)
+                        completion(.success(pngData))
+                    } else if let jpgData = image.jpegData(compressionQuality: 1.0) {
+                        // If it's JPG, return JPG data
+                        self?.imageDataCache.setObject(imageData as NSData, forKey: url.absoluteString as NSString)
+                        completion(.success(jpgData))
+                    } else {
+                        // Handle the case where the data is not a supported image format
+                        let error = NSError(domain: "com.harrypotter.imageError", code: 400, userInfo: [NSLocalizedDescriptionKey: "Unsupported image format"])
+                        completion(.failure(error))
+                    }
+                } else {
+                    // Handle the case where the data is neither a GIF nor a valid image
+                    let error = NSError(domain: "com.harrypotter.imageError", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid image data"])
+                    completion(.failure(error))
+                }
+            } else {
+                // Handle the case where no image data was received
+                let error = NSError(domain: "com.harrypotter.imageError", code: 500, userInfo: [NSLocalizedDescriptionKey: "No image data received"])
+                completion(.failure(error))
+            }
         }
+        
         task.resume()
     }
-    
 }
