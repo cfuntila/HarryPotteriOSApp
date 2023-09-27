@@ -1,5 +1,5 @@
 //
-//  HPCharacterPhotoCollectionViewCellViewModel.swift
+//  HPPhotoCollectionViewCellViewModel.swift
 //  HarryPotter
 //
 //  Created by Charity Funtila on 9/1/23.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-final class HPCharacterPhotoCollectionViewCellViewModel {
-    private var characterImageString: String?
+final class HPPhotoCollectionViewCellViewModel {
+    private var imageString: String?
     
-    init(characterImageString: String?) {
-        self.characterImageString = characterImageString ?? ""
+    init(imageString: String?) {
+        self.imageString = imageString ?? ""
     }
     
     //MARK: - Helpers
     
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let imageString = self.characterImageString, !imageString.isEmpty else {
-            let image = UIImage(named: Constants.defaultCharacterImageName)!
+        guard let imageString = self.imageString, !imageString.isEmpty else {
+            let image = UIImage(named: Constants.Character.defaultImageName)!
             completion(.success(image.pngData()!))
             return
         }

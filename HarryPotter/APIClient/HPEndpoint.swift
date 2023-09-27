@@ -12,4 +12,5 @@ import Foundation
 @frozen enum HPEndpoint: String, CaseIterable, Hashable {
     case characters
     case spells
+    case potions
 }

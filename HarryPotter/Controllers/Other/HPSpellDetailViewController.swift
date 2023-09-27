@@ -1,33 +1,32 @@
 //
-//  HPCharacterDetailViewController.swift
+//  HPSpellDetailViewController.swift
 //  HarryPotter
 //
-//  Created by Charity Funtila on 8/24/23.
+//  Created by Charity Funtila on 9/20/23.
 //
 
 import UIKit
 
-
-/// Controller to display the details of a character
-final class HPCharacterDetailViewController: UIViewController{
+class HPSpellDetailViewController: UIViewController {
     
     //MARK: - Properties
     
-    private let viewModel: HPCharacterDetailViewViewModel
-    private let detailView: HPCharacterDetailView
+    private let viewModel: HPSpellDetailViewViewModel
+    private let detailView: HPSpellDetailView
     
     //MARK: - Init
     
-    init(_ viewModel: HPCharacterDetailViewViewModel) {
+    init(_ viewModel: HPSpellDetailViewViewModel) {
         self.viewModel = viewModel
-        self.detailView = HPCharacterDetailView(frame: .zero , viewModel: viewModel)
+        self.detailView = HPSpellDetailView(frame: .zero , viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
     }
-
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -54,54 +53,24 @@ final class HPCharacterDetailViewController: UIViewController{
             right: view.safeAreaLayoutGuide.rightAnchor
         )
     }
-    
-    //MARK: - Family Memeber Selection
-    
-    func didSelectFamilyMemberCharacter(_ character: HPCharacterData) {
-        let viewModel = HPCharacterDetailViewViewModel(with: character)
-        let vc = HPCharacterDetailViewController(viewModel)
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func showFamilyMemberCharacter(with slug: String) {
-        let request = HPRequest(endpoint: .characters, pathComponents: [slug])
-        HPService.shared.execute(request, expecting: HPCharacter.self) { [weak self] result in
-            switch result {
-            case .success(let model):
-                let results = model
-                DispatchQueue.main.async {
-                    self?.didSelectFamilyMemberCharacter(results.data)
-                }
-            case .failure(let failure):
-                print(String(describing: failure))
-            }
-        }
-    }
-    
-    private func presentFamilyMember(viewModel: HPCharacterFamilyMemberCollectionViewCellViewModel) {
-        let slug = viewModel.getSlug()
-        showFamilyMemberCharacter(with: slug)
-    }
+
 }
 
 //MARK: - CollectionView Delegate
 
-extension HPCharacterDetailViewController: UICollectionViewDelegate {
+extension HPSpellDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sectionType = viewModel.sections[indexPath.section]
         switch sectionType {
-        case .photo, .information:
+        case .photo, .info:
             break
-        case .familyMembers(let viewModels):
-            collectionView.deselectItem(at: indexPath, animated: true)
-            presentFamilyMember(viewModel: viewModels[indexPath.row])
         }
     }
 }
 
 //MARK: - CollectionView DataSource
 
-extension HPCharacterDetailViewController: UICollectionViewDataSource {
+extension HPSpellDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.sections.count
     }
@@ -111,9 +80,7 @@ extension HPCharacterDetailViewController: UICollectionViewDataSource {
         switch sectionType {
         case .photo:
             return 1
-        case .information(let viewModels):
-            return viewModels.count
-        case .familyMembers(let viewModels):
+        case .info(let viewModels):
             return viewModels.count
         }
     }
@@ -132,7 +99,8 @@ extension HPCharacterDetailViewController: UICollectionViewDataSource {
             } else {
                 fatalError("Unsupported cell")
             }
-        case .information(let viewModels):
+            
+        case .info(let viewModels):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPInfoCollectionViewCell.identifier, for: indexPath) as? HPInfoCollectionViewCell
             if let cell = cell {
                 cell.configure(with: viewModels[indexPath.row])
@@ -142,17 +110,6 @@ extension HPCharacterDetailViewController: UICollectionViewDataSource {
             } else {
                 fatalError("Unsupported cell")
             }
-        case .familyMembers(let viewModels):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPCharacterFamilyMemberCollectionViewCell.identifier, for: indexPath) as? HPCharacterFamilyMemberCollectionViewCell
-            if let cell = cell {
-                cell.backgroundColor = .tertiarySystemBackground
-                cell.configure(with: viewModels[indexPath.row])
-                cell.roundCorners()
-                return cell
-            } else {
-                fatalError("Unsupported cell")
-            }
-            
         }
         
     }

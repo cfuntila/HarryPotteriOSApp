@@ -11,15 +11,15 @@ final class HPCharacterDetailViewViewModel {
     private let character: HPCharacterData
     
     enum SectionType {
-        case photo(viewModel: HPCharacterPhotoCollectionViewCellViewModel)
-        case information(viewModels: [HPCharacterInfoCollectionViewCellViewModel])
+        case photo(viewModel: HPPhotoCollectionViewCellViewModel)
+        case information(viewModels: [HPInfoCollectionViewCellViewModel])
         case familyMembers(viewModels: [HPCharacterFamilyMemberCollectionViewCellViewModel])
     }
     
     public var sections: [SectionType] = []
     
     public var title: String {
-        self.character.attributes?.name ?? Constants.defaultCharacterName
+        self.character.attributes?.name ?? Constants.Character.defaultName
     }
     
     private let fullLayoutSize = NSCollectionLayoutSize(
@@ -44,12 +44,12 @@ final class HPCharacterDetailViewViewModel {
         ]
     }
     
-    private func getPhotoViewModel() -> HPCharacterPhotoCollectionViewCellViewModel {
-        return HPCharacterPhotoCollectionViewCellViewModel(characterImageString: character.attributes?.image)
+    private func getPhotoViewModel() -> HPPhotoCollectionViewCellViewModel {
+        return HPPhotoCollectionViewCellViewModel(imageString: character.attributes?.image)
     }
     
-    private func getInfoViewModels() -> [HPCharacterInfoCollectionViewCellViewModel] {
-        var infoViewModels: [HPCharacterInfoCollectionViewCellViewModel] = []
+    private func getInfoViewModels() -> [HPInfoCollectionViewCellViewModel] {
+        var infoViewModels: [HPInfoCollectionViewCellViewModel] = []
         
         let attributes: [String: String?] = [
             "Born": character.attributes?.born,
@@ -72,7 +72,7 @@ final class HPCharacterDetailViewViewModel {
         for attribute in attributes {
             if let attributeValue = attribute.value {
                 infoViewModels.append(
-                    HPCharacterInfoCollectionViewCellViewModel(value: attributeValue, title: attribute.key)
+                    HPInfoCollectionViewCellViewModel(title: attributeValue, value: attribute.key)
                 )
             }
         }

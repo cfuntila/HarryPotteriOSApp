@@ -1,5 +1,5 @@
 //
-//  HPCharacterInfoCollectionViewCell.swift
+//  HPInfoCollectionViewCell.swift
 //  HarryPotter
 //
 //  Created by Charity Funtila on 9/1/23.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class HPCharacterInfoCollectionViewCell: UICollectionViewCell {
+final class HPInfoCollectionViewCell: UICollectionViewCell {
     //MARK: - Properties
     
-    static let identifier = "HPCharacterInfoCollectionViewCell"
+    static let identifier = "HPInfoCollectionViewCell"
     
     //MARK: - Subviews
     
@@ -95,7 +95,7 @@ final class HPCharacterInfoCollectionViewCell: UICollectionViewCell {
         )
     }
     
-    public func configure(with viewModel: HPCharacterInfoCollectionViewCellViewModel) {
+    public func configure(with viewModel: HPInfoCollectionViewCellViewModel) {
         self.titleLabel.text = viewModel.title
         self.valueLabel.text = viewModel.value
     }

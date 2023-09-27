@@ -13,6 +13,7 @@ final class HPCharacterViewController: UIViewController {
     
     //MARK: - Properties
     
+    /// View to hold and show all the characters retrieved from API
     private let characterListView = HPCharacterListView()
 
     //MARK: - Lifecyles
@@ -24,14 +25,16 @@ final class HPCharacterViewController: UIViewController {
     
     //MARK: - Helpers
     
+    /// Setup UI for controller when view loads
     func configureUI() {
-        title = Constants.charactersTitle
+        title = Constants.Character.title
         view.backgroundColor = .systemBackground
         view.addSubview(characterListView)
         characterListView.delegate = self
         addConstraints()
     }
     
+    /// Set constraints for views in controller
     func addConstraints() {
         characterListView.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
@@ -45,6 +48,9 @@ final class HPCharacterViewController: UIViewController {
 //MARK: - Character ListView Delegate
 
 extension HPCharacterViewController: HPCharacterListViewDelegate {
+    
+    /// Show Character Details in a new controller when character is selected
+    /// - Parameter character: Character user selected
     func didSelectCharacter(_ character: HPCharacterData) {
         let viewModel = HPCharacterDetailViewViewModel(with: character)
         let vc = HPCharacterDetailViewController(viewModel)

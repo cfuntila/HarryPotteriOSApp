@@ -90,7 +90,7 @@ final class HPCollectionViewCell: UICollectionViewCell {
                     break
                 case .success(let data):
                     DispatchQueue.main.async {
-                            // Check if the data is a GIF.
+                        // Check if the data is a GIF.
                         let isGif = viewModel.imageString?.lowercased().hasSuffix(".gif") ?? false
 
                         if isGif {

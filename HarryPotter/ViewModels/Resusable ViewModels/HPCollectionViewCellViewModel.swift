@@ -27,7 +27,7 @@ final class HPCollectionViewCellViewModel: Hashable, Equatable {
         guard let imageString = self.imageString, !imageString.isEmpty else {
             
             //TODO: change defaultCharactrrtImageName to just defaultImageName
-            let image = UIImage(named: Constants.defaultCharacterImageName)!
+            let image = UIImage(named: Constants.Character.defaultImageName)!
             completion(.success(image.pngData()!))
             return
         }

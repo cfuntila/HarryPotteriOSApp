@@ -65,8 +65,8 @@ class HPCharacterDetailView: UIView {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(HPCharacterPhotoCollectionViewCell.self, forCellWithReuseIdentifier: HPCharacterPhotoCollectionViewCell.identifier)
-        collectionView.register(HPCharacterInfoCollectionViewCell.self, forCellWithReuseIdentifier: HPCharacterInfoCollectionViewCell.identifier)
+        collectionView.register(HPPhotoCollectionViewCell.self, forCellWithReuseIdentifier: HPPhotoCollectionViewCell.identifier)
+        collectionView.register(HPInfoCollectionViewCell.self, forCellWithReuseIdentifier: HPInfoCollectionViewCell.identifier)
         collectionView.register(HPCharacterFamilyMemberCollectionViewCell.self, forCellWithReuseIdentifier: HPCharacterFamilyMemberCollectionViewCell.identifier)
         return collectionView
     }

@@ -1,5 +1,5 @@
 //
-//  HPCharacterPhotoCollectionViewCell.swift
+//  HPPhotoCollectionViewCell.swift
 //  HarryPotter
 //
 //  Created by Charity Funtila on 9/1/23.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class HPCharacterPhotoCollectionViewCell: UICollectionViewCell {
+final class HPPhotoCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
     
-    static let identifier = "HPCharacterPhotoCollectionViewCell"
+    static let identifier = "HPPhotoCollectionViewCell"
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -48,7 +48,7 @@ final class HPCharacterPhotoCollectionViewCell: UICollectionViewCell {
         imageView.anchor(top: contentView.topAnchor, bottom: contentView.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor)
     }
     
-    public func configure(with viewModel: HPCharacterPhotoCollectionViewCellViewModel) {
+    public func configure(with viewModel: HPPhotoCollectionViewCellViewModel) {
         viewModel.fetchImage(completion: { [weak self] result in
             switch result {
                 case .failure(let error):

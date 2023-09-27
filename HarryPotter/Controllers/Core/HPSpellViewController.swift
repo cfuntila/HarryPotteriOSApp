@@ -24,7 +24,7 @@ final class HPSpellViewController: UIViewController {
     //MARK: - Helpers
     
     private func configureUI() {
-        title = Constants.spellsTitle
+        title = Constants.Spell.title
         view.backgroundColor = .systemBackground
         view.addSubview(spellsListView)
         spellsListView.delegate = self
@@ -43,13 +43,13 @@ final class HPSpellViewController: UIViewController {
 
 }
 
-//MARK: - Character ListView Delegate
+//MARK: - Spell ListView Delegate
 
 extension HPSpellViewController: HPSpellListViewDelegate {
     func didSelectSpell(_ spell: HPSpell) {
-//        let viewModel = HPSpellDetailViewViewModel(with: spell)
-//        let vc = HPSpellDetailViewController(viewModel)
-//        navigationController?.pushViewController(vc, animated: true)
+        let viewModel = HPSpellDetailViewViewModel(with: spell)
+        let vc = HPSpellDetailViewController(viewModel)
+        navigationController?.pushViewController(vc, animated: true)
         print("push detail VC")
     }
 }

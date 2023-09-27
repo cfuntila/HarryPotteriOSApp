@@ -1,27 +1,27 @@
 //
-//  HPSpellListViewViewModel.swift
+//  HPPotionListViewViewModel.swift
 //  HarryPotter
 //
-//  Created by Charity Funtila on 9/19/23.
+//  Created by Charity Funtila on 9/27/23.
 //
 
 import UIKit
 
-protocol HPSpellListViewViewModelDelegate: AnyObject {
-    func didLoadInitialSpells()
-    func didLoadMoreSpells(with paths: [IndexPath], spells: [HPSpell])
-    func didSelectSpell(_ spell: HPSpell)
+protocol HPPotionListViewViewModelDelegate: AnyObject {
+    func didLoadInitialPotions()
+    func didLoadMorePotions(with paths: [IndexPath], potions: [HPPotion])
+    func didSelectPotion(_ potion: HPPotion)
 }
 
-final class HPSpellListViewViewModel: NSObject {
+final class HPPotionListViewViewModel: NSObject {
     
-    public weak var delegate: HPSpellListViewViewModelDelegate?
+    public weak var delegate: HPPotionListViewViewModelDelegate?
     
-    private var spells: [HPSpell] = [] {
+    private var potions: [HPPotion] = [] {
         didSet {
-            for spell in spells {
-                let name = spell.attributes.name
-                let imageString = spell.attributes.image
+            for potion in potions {
+                let name = potion.attributes.name
+                let imageString = potion.attributes.image
                 
                 let cellViewModel = HPCollectionViewCellViewModel(name: name, imageString: imageString)
                 
@@ -38,21 +38,21 @@ final class HPSpellListViewViewModel: NSObject {
     public var shouldShowLoadMoreIndicator: Bool {
         return apiInfo?.next != nil
     }
-    public var isLoadingMoreSpells: Bool = false
+    public var isLoadingMorePotions: Bool = false
     var isPageRefreshing:Bool = false
     var page: Int = 0
     
     
-    func fetchSpells() {
-        HPService.shared.execute(.listAllSpellsRequest, expecting: HPGetSpellsResponse.self) { [weak self] result in
+    func fetchPotions() {
+        HPService.shared.execute(.listAllPotionsRequest, expecting: HPGetPotionsResponse.self) { [weak self] result in
             switch result {
             case .success(let model):
                 let results = model.data
                 let info = model.links
-                self?.spells = results
+                self?.potions = results
                 self?.apiInfo = info
                 DispatchQueue.main.async {
-                    self?.delegate?.didLoadInitialSpells()
+                    self?.delegate?.didLoadInitialPotions()
                 }
             case .failure(let error):
                 print(String(describing: error))
@@ -61,17 +61,17 @@ final class HPSpellListViewViewModel: NSObject {
     }
     
     /// Paginate if additional characters are needed
-    public func fetchAdditionalSpells(url: URL) {
-        guard !isLoadingMoreSpells else {
+    public func fetchAdditionalPotions(url: URL) {
+        guard !isLoadingMorePotions else {
             return
         }
-        isLoadingMoreSpells = true
+        isLoadingMorePotions = true
         guard let request = HPRequest(url: url) else {
-            isLoadingMoreSpells = false
+            isLoadingMorePotions = false
             return
         }
         
-        HPService.shared.execute(request, expecting: HPGetSpellsResponse.self) { [weak self] result in
+        HPService.shared.execute(request, expecting: HPGetPotionsResponse.self) { [weak self] result in
             guard let strongSelf = self else {
                 return
             }
@@ -81,25 +81,25 @@ final class HPSpellListViewViewModel: NSObject {
                 let info = responseModel.links
                 strongSelf.apiInfo = info
                 
-                let originalCount = strongSelf.spells.count
+                let originalCount = strongSelf.potions.count
                 let newCount = moreResults.count
                 let total = originalCount+newCount
                 let startingIndex = total - newCount
                 let indexPathsToAdd: [IndexPath] = Array(startingIndex..<(startingIndex+newCount)).compactMap({
                     return IndexPath(row: $0, section: 0)
                 })
-                strongSelf.spells.append(contentsOf: moreResults)
+                strongSelf.potions.append(contentsOf: moreResults)
                 
                 DispatchQueue.main.async {
-                    strongSelf.delegate?.didLoadMoreSpells(
-                        with: indexPathsToAdd, spells: strongSelf.spells
+                    strongSelf.delegate?.didLoadMorePotions(
+                        with: indexPathsToAdd, potions: strongSelf.potions
                     )
                     
-                    strongSelf.isLoadingMoreSpells = false
+                    strongSelf.isLoadingMorePotions = false
                 }
             case .failure(let failure):
                 print(String(describing: failure))
-                self?.isLoadingMoreSpells = false
+                self?.isLoadingMorePotions = false
             }
         }
     }
@@ -107,7 +107,7 @@ final class HPSpellListViewViewModel: NSObject {
 
 
 //MARK: - UICollectionViewDataSource
-extension HPSpellListViewViewModel: UICollectionViewDataSource {
+extension HPPotionListViewViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellViewModels.count
     }
@@ -147,18 +147,18 @@ extension HPSpellListViewViewModel: UICollectionViewDataSource {
 }
 
 //MARK: - UICollectionViewDelegate
-extension HPSpellListViewViewModel: UICollectionViewDelegate {
+extension HPPotionListViewViewModel: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         print("selected cell from collection view")
-        let spell = spells[indexPath.row]
-        delegate?.didSelectSpell(spell)
+        let potion = potions[indexPath.row]
+        delegate?.didSelectPotion(potion)
     }
 }
 
 
 //MARK: - UICollectionViewDelegateFlowLayout
-extension HPSpellListViewViewModel: UICollectionViewDelegateFlowLayout {
+extension HPPotionListViewViewModel: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let bounds = UIScreen.main.bounds
         let width = (bounds.width - 30)/2
@@ -167,10 +167,10 @@ extension HPSpellListViewViewModel: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: - UIScrollViewDelegate
-extension HPSpellListViewViewModel: UIScrollViewDelegate {
+extension HPPotionListViewViewModel: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard shouldShowLoadMoreIndicator,
-              !isLoadingMoreSpells,
+              !isLoadingMorePotions,
               !cellViewModels.isEmpty,
               let nextUrlString = apiInfo?.next,
               let url = URL(string: nextUrlString)
@@ -180,7 +180,7 @@ extension HPSpellListViewViewModel: UIScrollViewDelegate {
 
         Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] t in
             if(scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
-                self?.fetchAdditionalSpells(url: url)
+                self?.fetchAdditionalPotions(url: url)
             }
             t.invalidate()
         }

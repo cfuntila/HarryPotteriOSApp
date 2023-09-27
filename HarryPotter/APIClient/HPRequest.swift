@@ -121,4 +121,5 @@ final class HPRequest {
 extension HPRequest {
     static let listAllCharactersRequest = HPRequest(endpoint: .characters)
     static let listAllSpellsRequest = HPRequest(endpoint: .spells)
+    static let listAllPotionsRequest = HPRequest(endpoint: .potions)
 }

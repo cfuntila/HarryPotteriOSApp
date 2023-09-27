@@ -7,9 +7,22 @@
 
 import Foundation
 
+
+/// Constants for the whole project
 struct Constants {
-    static let defaultCharacterImageName = "hat"
-    static let defaultCharacterName = "No name"
-    static let charactersTitle = "Characters"
-    static let spellsTitle = "Spells"
+    struct Character {
+        static let defaultImageName = "hat"
+        static let defaultName = "No name"
+        static let title = "Characters"
+    }
+    
+    struct Spell {
+        static let defaultName = "Unnamed Spell"
+        static let title = "Spells"
+    }
+    
+    struct Potion {
+        static let defaultName = "Unnamed Potion"
+        static let title = "Potions"
+    }
 }
