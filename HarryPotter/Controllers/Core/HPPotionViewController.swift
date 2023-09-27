@@ -23,10 +23,10 @@ class HPPotionViewController: UIViewController {
     //MARK: - Helpers
     
     private func configureUI() {
-        title = Constants.Spell.title
+        title = Constants.Potion.title
         view.backgroundColor = .systemBackground
         view.addSubview(potionsListView)
-//        spellsListView.delegate = self
+        potionsListView.delegate = self
         addConstraints()
     }
     
@@ -44,11 +44,11 @@ class HPPotionViewController: UIViewController {
 
 //MARK: - Potion ListView Delegate
 
-//extension HPPotionViewController: HPPotionListViewDelegate {
-//    func didSelectPotion(_ potion: HPPotion) {
-//        let viewModel = HPPotionDetailViewViewModel(with: potion)
-//        let vc = HPPotionDetailViewController(viewModel)
-//        navigationController?.pushViewController(vc, animated: true)
-//        print("push detail VC")
-//    }
-//}
+extension HPPotionViewController: HPPotionListViewDelegate {
+    func didSelectPotion(_ potion: HPPotion) {
+        let viewModel = HPPotionDetailViewViewModel(with: potion)
+        let vc = HPPotionDetailViewController(viewModel)
+        navigationController?.pushViewController(vc, animated: true)
+        print("push detail VC")
+    }
+}

@@ -14,6 +14,9 @@
 		AF4ACC162AC4BD1A00AB8540 /* HPPotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4ACC152AC4BD1A00AB8540 /* HPPotionViewController.swift */; };
 		AF4ACC192AC4BE0B00AB8540 /* HPPotionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4ACC182AC4BE0B00AB8540 /* HPPotionListView.swift */; };
 		AF4ACC1C2AC4BEE400AB8540 /* HPPotionListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4ACC1B2AC4BEE400AB8540 /* HPPotionListViewViewModel.swift */; };
+		AF4ACC1E2AC4C3B400AB8540 /* HPPotionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4ACC1D2AC4C3B400AB8540 /* HPPotionDetailViewController.swift */; };
+		AF4ACC212AC4C45A00AB8540 /* HPPotionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4ACC202AC4C45A00AB8540 /* HPPotionDetailView.swift */; };
+		AF4ACC242AC4C4B900AB8540 /* HPPotionDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4ACC232AC4C4B900AB8540 /* HPPotionDetailViewViewModel.swift */; };
 		AF88ADDE2A93C5B300667A11 /* HPCharacterListViewViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88ADDD2A93C5B300667A11 /* HPCharacterListViewViewModel .swift */; };
 		AF88ADE02A93C61A00667A11 /* HPCharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88ADDF2A93C61A00667A11 /* HPCharacterListView.swift */; };
 		AF88ADE22A93CD7600667A11 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88ADE12A93CD7600667A11 /* Extentions.swift */; };
@@ -66,6 +69,9 @@
 		AF4ACC152AC4BD1A00AB8540 /* HPPotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPPotionViewController.swift; sourceTree = "<group>"; };
 		AF4ACC182AC4BE0B00AB8540 /* HPPotionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPPotionListView.swift; sourceTree = "<group>"; };
 		AF4ACC1B2AC4BEE400AB8540 /* HPPotionListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPPotionListViewViewModel.swift; sourceTree = "<group>"; };
+		AF4ACC1D2AC4C3B400AB8540 /* HPPotionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPPotionDetailViewController.swift; sourceTree = "<group>"; };
+		AF4ACC202AC4C45A00AB8540 /* HPPotionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPPotionDetailView.swift; sourceTree = "<group>"; };
+		AF4ACC232AC4C4B900AB8540 /* HPPotionDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPPotionDetailViewViewModel.swift; sourceTree = "<group>"; };
 		AF88ADDD2A93C5B300667A11 /* HPCharacterListViewViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HPCharacterListViewViewModel .swift"; sourceTree = "<group>"; };
 		AF88ADDF2A93C61A00667A11 /* HPCharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCharacterListView.swift; sourceTree = "<group>"; };
 		AF88ADE12A93CD7600667A11 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
@@ -155,11 +161,28 @@
 			path = "Potions List ViewModels";
 			sourceTree = "<group>";
 		};
+		AF4ACC1F2AC4C41A00AB8540 /* Potion Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				AF4ACC202AC4C45A00AB8540 /* HPPotionDetailView.swift */,
+			);
+			path = "Potion Detail View";
+			sourceTree = "<group>";
+		};
+		AF4ACC222AC4C4A800AB8540 /* Potion Details */ = {
+			isa = PBXGroup;
+			children = (
+				AF4ACC232AC4C4B900AB8540 /* HPPotionDetailViewViewModel.swift */,
+			);
+			path = "Potion Details";
+			sourceTree = "<group>";
+		};
 		AF88AE022A97EFDC00667A11 /* Other */ = {
 			isa = PBXGroup;
 			children = (
 				AF88AE032A97EFFF00667A11 /* HPCharacterDetailViewController.swift */,
 				AFB3CE842ABB80A3006601DC /* HPSpellDetailViewController.swift */,
+				AF4ACC1D2AC4C3B400AB8540 /* HPPotionDetailViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -323,6 +346,7 @@
 				AF4ACC1A2AC4BEC000AB8540 /* Potions List ViewModels */,
 				AF88AE182AA2A83100667A11 /* Character Details */,
 				AFB3CE892ABB8479006601DC /* Spell Details */,
+				AF4ACC222AC4C4A800AB8540 /* Potion Details */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -336,6 +360,7 @@
 				AF4ACC172AC4BDE000AB8540 /* Potion List View */,
 				AF88AE0F2AA2A73300667A11 /* Character Detail View */,
 				AFB3CE862ABB816F006601DC /* Spell Detail View */,
+				AF4ACC1F2AC4C41A00AB8540 /* Potion Detail View */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -519,6 +544,7 @@
 			files = (
 				AF4ACC122AC3DB8300AB8540 /* HPGetPotionsResponse.swift in Sources */,
 				AFF4D7EA2A8ECB63000E6339 /* HPGetCharactersResponse.swift in Sources */,
+				AF4ACC1E2AC4C3B400AB8540 /* HPPotionDetailViewController.swift in Sources */,
 				AF88AE082A97F19D00667A11 /* HPCharacterDetailViewViewModel.swift in Sources */,
 				AF88AE912ABA500300667A11 /* HPSpellListViewViewModel.swift in Sources */,
 				AF88AE842ABA3B2B00667A11 /* HPMeta.swift in Sources */,
@@ -542,6 +568,7 @@
 				AF88AE152AA2A7CB00667A11 /* HPInfoCollectionViewCell.swift in Sources */,
 				AF88AE1A2AA2A84F00667A11 /* HPPhotoCollectionViewCellViewModel.swift in Sources */,
 				AF88AE1E2AA2A88600667A11 /* HPCharacterFamilyMemberCollectionViewCellViewModel.swift in Sources */,
+				AF4ACC212AC4C45A00AB8540 /* HPPotionDetailView.swift in Sources */,
 				AF88AE0A2A97F7F800667A11 /* HPFooterLoadingCollectionReusableView.swift in Sources */,
 				AFF4D7DB2A8E9A4F000E6339 /* HPSpell.swift in Sources */,
 				AF88AE0C2A994F9800667A11 /* Constants.swift in Sources */,
@@ -559,6 +586,7 @@
 				AF88AE132AA2A7AC00667A11 /* HPPhotoCollectionViewCell.swift in Sources */,
 				AF88AE062A97F17C00667A11 /* HPCharacterDetailView.swift in Sources */,
 				AF4ACC162AC4BD1A00AB8540 /* HPPotionViewController.swift in Sources */,
+				AF4ACC242AC4C4B900AB8540 /* HPPotionDetailViewViewModel.swift in Sources */,
 				AFB3CE8B2ABB8492006601DC /* HPSpellDetailViewViewModel.swift in Sources */,
 				AF88AE7B2AB90A8500667A11 /* HPAPICacheManager.swift in Sources */,
 			);

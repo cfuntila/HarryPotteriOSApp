@@ -1,15 +1,17 @@
 //
-//  HPSpellDetailViewViewModel.swift
+//  HPPotionDetailViewViewModel.swift
 //  HarryPotter
 //
-//  Created by Charity Funtila on 9/20/23.
+//  Created by Charity Funtila on 9/27/23.
 //
+
+import Foundation
 
 import UIKit
 
-final class HPSpellDetailViewViewModel {
+final class HPPotionDetailViewViewModel {
     
-    private let spell: HPSpell
+    private let potion: HPPotion
     
     enum SectionType {
         case photo(viewModel: HPPhotoCollectionViewCellViewModel)
@@ -19,7 +21,7 @@ final class HPSpellDetailViewViewModel {
     public var sections: [SectionType] = []
     
     public var title: String {
-        self.spell.attributes.name
+        self.potion.attributes.name
     }
     
     private let fullLayoutSize = NSCollectionLayoutSize(
@@ -29,8 +31,8 @@ final class HPSpellDetailViewViewModel {
     
     //MARK: - Init
     
-    init(with spell: HPSpell) {
-        self.spell = spell
+    init(with potion: HPPotion) {
+        self.potion = potion
         setUpSections()
     }
     
@@ -44,19 +46,22 @@ final class HPSpellDetailViewViewModel {
     }
     
     private func getPhotoViewModel() -> HPPhotoCollectionViewCellViewModel {
-        return HPPhotoCollectionViewCellViewModel(imageString: spell.attributes.image)
+        return HPPhotoCollectionViewCellViewModel(imageString: potion.attributes.image)
     }
     
     private func getInfoViewModels() -> [HPInfoCollectionViewCellViewModel] {
         var infoViewModels: [HPInfoCollectionViewCellViewModel] = []
         
         let attributes: [String: String?] = [
-            "Incantation": spell.attributes.incantation,
-            "Category": spell.attributes.category,
-            "Effect": spell.attributes.effect,
-            "Light": spell.attributes.light,
-            "Hand": spell.attributes.hand,
-            "Creator": spell.attributes.creator
+            "effect": potion.attributes.effect,
+            "side_effects": potion.attributes.side_effects,
+            "characteristics": potion.attributes.characteristics,
+            "time": potion.attributes.time,
+            "difficulty": potion.attributes.difficulty,
+            "ingredients": potion.attributes.ingredients,
+            "inventors": potion.attributes.inventors,
+            "manufacturers": potion.attributes.manufacturers,
+            "wiki": potion.attributes.wiki,
         ]
         
         for attribute in attributes {

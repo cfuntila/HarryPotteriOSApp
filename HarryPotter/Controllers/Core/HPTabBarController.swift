@@ -26,7 +26,7 @@ final class HPTabBarController: UITabBarController {
         
         let nav1 = createNavigationController(viewController: characterVC, navTitle: Constants.Character.title, imageSystemName: "person", tag: 1)
         let nav2 = createNavigationController(viewController: spellVC, navTitle: Constants.Spell.title, imageSystemName: "pencil.and.outline", tag: 2)
-        let nav3 = createNavigationController(viewController: potionVC, navTitle: Constants.Potion.title, imageSystemName: "pencil.and.outline", tag: 3)
+        let nav3 = createNavigationController(viewController: potionVC, navTitle: Constants.Potion.title, imageSystemName: "eyedropper", tag: 3)
         
         setViewControllers([nav1, nav2, nav3], animated: true)
     }
