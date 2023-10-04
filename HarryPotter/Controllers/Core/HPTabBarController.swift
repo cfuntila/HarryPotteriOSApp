@@ -23,12 +23,14 @@ final class HPTabBarController: UITabBarController {
         let characterVC = HPCharacterViewController()
         let spellVC = HPSpellViewController()
         let potionVC = HPPotionViewController()
+        let settingsVC = HPSettingsViewController()
         
         let nav1 = createNavigationController(viewController: characterVC, navTitle: Constants.Character.title, imageSystemName: "person", tag: 1)
         let nav2 = createNavigationController(viewController: spellVC, navTitle: Constants.Spell.title, imageSystemName: "pencil.and.outline", tag: 2)
         let nav3 = createNavigationController(viewController: potionVC, navTitle: Constants.Potion.title, imageSystemName: "eyedropper", tag: 3)
+        let nav4 = createNavigationController(viewController: settingsVC, navTitle: Constants.Settings.title, imageSystemName: "gear", tag: 4)
         
-        setViewControllers([nav1, nav2, nav3], animated: true)
+        setViewControllers([nav1, nav2, nav3, nav4], animated: true)
     }
     
     private func createNavigationController(viewController: UIViewController, navTitle title: String, imageSystemName: String, tag: Int) -> UINavigationController {

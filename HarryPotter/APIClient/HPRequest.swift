@@ -70,6 +70,12 @@ final class HPRequest {
         self.pathComponents = pathComponents
         self.queryParameters = queryParameters
     }
+    
+    convenience init?(characterName: String) {
+        let endpoint = HPEndpoint.characters
+        let queryParameter = URLQueryItem(name: "filter"+"[" + "name_cont_any" + "]", value: characterName)
+        self.init(endpoint: endpoint, queryParameters: [queryParameter])
+    }
 
     convenience init?(url: URL) {
         var urlString = url.absoluteString

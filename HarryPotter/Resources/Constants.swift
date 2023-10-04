@@ -25,4 +25,8 @@ struct Constants {
         static let defaultName = "Unnamed Potion"
         static let title = "Potions"
     }
+    
+    struct Settings {
+        static let title = "Settings"
+    }
 }

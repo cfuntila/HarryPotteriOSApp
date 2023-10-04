@@ -14,8 +14,8 @@
             filePath = "HarryPotter/Controllers/Core/HPSpellViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "didSelectSpell(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -49,6 +49,70 @@
             startingLineNumber = "20"
             endingLineNumber = "20"
             landmarkName = "init(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3F9F6FF-168B-4F74-B1E1-76A8F813016C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HarryPotter/Views/Character List View/HPCharacterListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "searchBarSearchButtonClicked(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C3F9F6FF-168B-4F74-B1E1-76A8F813016C - ddec9778c8fa2ef6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HarryPotter.HPCharacterListView.searchBarSearchButtonClicked(__C.UISearchBar) -&gt; ()"
+                  moduleName = "HarryPotter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charityfuntila/Desktop/desktop/HarryPotter/HarryPotter/Views/Character%20List%20View/HPCharacterListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "272">
+               </Location>
+               <Location
+                  uuid = "C3F9F6FF-168B-4F74-B1E1-76A8F813016C - ddec9778c8fa2ed5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HarryPotter.HPCharacterListView.searchBarSearchButtonClicked(__C.UISearchBar) -&gt; ()"
+                  moduleName = "HarryPotter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charityfuntila/Desktop/desktop/HarryPotter/HarryPotter/Views/Character%20List%20View/HPCharacterListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "272">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5964867-9923-4E86-9B58-8885B1F6BC78"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HarryPotter/Views/Character List View/HPCharacterListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "didFilterForCharacters()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

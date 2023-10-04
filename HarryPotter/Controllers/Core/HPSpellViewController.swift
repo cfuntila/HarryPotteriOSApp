@@ -29,6 +29,7 @@ final class HPSpellViewController: UIViewController {
         view.addSubview(spellsListView)
         spellsListView.delegate = self
         addConstraints()
+        addSearchButton()
     }
     
     private func addConstraints() {
@@ -38,9 +39,16 @@ final class HPSpellViewController: UIViewController {
             left: view.safeAreaLayoutGuide.leftAnchor,
             right: view.safeAreaLayoutGuide.rightAnchor
         )
-        
     }
-
+    
+    private func addSearchButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
+    }
+    
+    @objc private func didTapSearch() {
+        let searchVC = HPSearchViewController(config: .init(type: .spell))
+        navigationController?.pushViewController(searchVC, animated: true)
+    }
 }
 
 //MARK: - Spell ListView Delegate

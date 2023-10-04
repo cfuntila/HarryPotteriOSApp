@@ -28,6 +28,7 @@ class HPPotionViewController: UIViewController {
         view.addSubview(potionsListView)
         potionsListView.delegate = self
         addConstraints()
+        addSearchButton()
     }
     
     private func addConstraints() {
@@ -37,6 +38,15 @@ class HPPotionViewController: UIViewController {
             left: view.safeAreaLayoutGuide.leftAnchor,
             right: view.safeAreaLayoutGuide.rightAnchor
         )
+    }
+    
+    private func addSearchButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
+    }
+    
+    @objc private func didTapSearch() {
+        let searchVC = HPSearchViewController(config: .init(type: .potion))
+        navigationController?.pushViewController(searchVC, animated: true)
     }
     
 }

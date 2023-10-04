@@ -22,6 +22,12 @@ final class HPCharacterListView: UIView {
     
     public weak var delegate: HPCharacterListViewDelegate?
     
+    private let searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Search for a character"
+        return searchBar
+    }()
+    
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.hidesWhenStopped = true
@@ -54,10 +60,12 @@ final class HPCharacterListView: UIView {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        addSubviews(collectionView, spinner)
+        addSubviews(searchBar, collectionView, spinner)
         addConstraints()
         
         spinner.startAnimating()
+        
+        searchBar.delegate = self
         
         viewModel.delegate = self
         viewModel.fetchCharacters()
@@ -74,7 +82,20 @@ final class HPCharacterListView: UIView {
     private func addConstraints() {
         spinner.center(inView: self)
         spinner.setDimensions(width: 100, height: 100)
-        collectionView.anchor(top: topAnchor, bottom: bottomAnchor, left: leftAnchor, right: rightAnchor)
+        searchBar.anchor(
+            top: topAnchor,
+            bottom: collectionView.topAnchor,
+            left: leftAnchor,
+            right: rightAnchor,
+            paddingBottom: 10
+        )
+        collectionView.anchor(
+            top: searchBar.bottomAnchor,
+            bottom: bottomAnchor,
+            left: leftAnchor,
+            right: rightAnchor,
+            paddingTop: 10
+        )
     }
     
     private func setUpCollectionView() {
@@ -104,6 +125,10 @@ extension HPCharacterListView: HPCharacterListViewViewModelDelegate {
         //TODO: - Fix
         collectionView.reloadData()
     }
+    
+    func didFilterForCharacters() {
+        collectionView.reloadData()
+    }
 }
 
 
@@ -121,4 +146,13 @@ private extension UICollectionView {
             withReuseIdentifier: HPFooterLoadingCollectionReusableView.identifier
         )
     }
+}
+
+extension HPCharacterListView: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let query = searchBar.text, !query.isEmpty else { return }
+        viewModel.fetchCharacters(withName: query)
+    }
+    
+    
 }

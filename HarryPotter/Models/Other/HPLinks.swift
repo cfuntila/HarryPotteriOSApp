@@ -13,3 +13,4 @@ struct HPLinks: Codable {
     let next: String?
     let last: String?
 }
+

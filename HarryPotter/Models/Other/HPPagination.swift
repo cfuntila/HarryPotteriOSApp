@@ -9,7 +9,9 @@ import Foundation
 
 struct HPPagination: Codable {
     let current: Int
-    let next: Int
-    let last: Int
+    let next: Int?
+    let last: Int?
     let records: Int
 }
+
+

@@ -26,12 +26,13 @@ final class HPCharacterViewController: UIViewController {
     //MARK: - Helpers
     
     /// Setup UI for controller when view loads
-    func configureUI() {
+    private func configureUI() {
         title = Constants.Character.title
         view.backgroundColor = .systemBackground
         view.addSubview(characterListView)
         characterListView.delegate = self
         addConstraints()
+        addSearchButton()
     }
     
     /// Set constraints for views in controller
@@ -42,6 +43,15 @@ final class HPCharacterViewController: UIViewController {
             left: view.safeAreaLayoutGuide.leftAnchor,
             right: view.safeAreaLayoutGuide.rightAnchor
         )
+    }
+    
+    private func addSearchButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
+    }
+    
+    @objc private func didTapSearch() {
+        let searchVC = HPSearchViewController(config: .init(type: .character))
+        navigationController?.pushViewController(searchVC, animated: true)
     }
 }
 

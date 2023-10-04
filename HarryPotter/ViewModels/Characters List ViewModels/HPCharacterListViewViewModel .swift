@@ -11,6 +11,7 @@ protocol HPCharacterListViewViewModelDelegate: AnyObject {
     func didLoadInitialCharacters()
     func didLoadMoreCharacters(with paths: [IndexPath], characters: [HPCharacterData])
     func didSelectCharacter(_ character: HPCharacterData)
+    func didFilterForCharacters()
 }
 
 
@@ -20,6 +21,8 @@ final class HPCharacterListViewViewModel: NSObject {
     
     public weak var delegate: HPCharacterListViewViewModelDelegate?
     
+    private var filtered = false
+    
     private var characters: [HPCharacterData] = [] {
         didSet {
             for character in characters {
@@ -28,7 +31,7 @@ final class HPCharacterListViewViewModel: NSObject {
                 
                 let cellViewModel = HPCollectionViewCellViewModel(name: name, imageString: imageString)
                 
-                if !cellViewModels.contains(cellViewModel) {
+                if !cellViewModels.contains(cellViewModel){
                     cellViewModels.append(cellViewModel)
                 }
             }
@@ -109,6 +112,30 @@ final class HPCharacterListViewViewModel: NSObject {
             }
         }
     }
+    
+    public func fetchCharacters(withName name: String) {
+        guard let request = HPRequest(characterName: name) else {
+            return
+        }
+        
+        HPService.shared.execute(request, expecting: HPGetCharactersResponse.self) { [weak self] result in
+            switch result {
+            case .success(let model):
+                let results = model.data
+                let info = model.links
+                self?.cellViewModels = []
+                self?.characters = []
+                self?.characters = results
+                self?.apiInfo = info
+                DispatchQueue.main.async {
+                    self?.delegate?.didFilterForCharacters()
+                }
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
 }
 
 //MARK: - UICollectionViewDataSource

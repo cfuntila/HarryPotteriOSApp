@@ -50,6 +50,7 @@ class HPCharacterDetailView: UIView {
         
         spinner.center(inView: self)
         spinner.setDimensions(width: 100, height: 100)
+        
         collectionView.anchor(
             top: topAnchor,
             bottom: bottomAnchor,
