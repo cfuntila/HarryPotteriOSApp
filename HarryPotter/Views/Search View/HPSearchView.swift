@@ -15,6 +15,8 @@ final class HPSearchView: UIView {
     
     // SearchInputView (bar, selection buttons)
     
+    private let searchInputView = HPSearchInputView()
+    
     // NoResultsView
     
     private let noResultsView = HPNoSearchResultsView()
@@ -27,8 +29,10 @@ final class HPSearchView: UIView {
         self.viewModel = viewModel
         super.init(frame: frame)
         backgroundColor = .systemBackground
-        addSubviews(noResultsView)
+        addSubviews(searchInputView, noResultsView)
         addConstraints()
+        
+        searchInputView.configure(with:  .init(type: viewModel.config.type))
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +40,7 @@ final class HPSearchView: UIView {
     }
     
     private func addConstraints() {
+        searchInputView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, height: 150)
         noResultsView.setDimensions(width: 150, height: 150)
         noResultsView.center(inView: self)
     }

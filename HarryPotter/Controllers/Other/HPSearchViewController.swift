@@ -11,9 +11,9 @@ final class HPSearchViewController: UIViewController {
     
     struct Config {
         enum `Type` {
-            case character
-            case spell
-            case potion
+            case character // gender (Male, Female)
+            case spell //
+            case potion // Difficulty (Beginner, Beginner to Moderate, Moderate, Moderate/Advanced, Advanced, "Ordinary Wizarding Level", "One of a kind"
             
             
             var title: String {

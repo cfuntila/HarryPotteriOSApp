@@ -13,4 +13,4 @@ final class HPSearchViewViewModel {
     init(config: HPSearchViewController.Config) {
         self.config = config
     }
-}
+} 
