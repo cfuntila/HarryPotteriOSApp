@@ -44,7 +44,3 @@ I'm always open to feedback, suggestions, and contributions. If you find any bug
 ---
 
 Thank you for taking the time to explore this project. I look forward to any opportunities to collaborate or discuss my work further.
-
----
-
-You can copy the content above and paste it into your `README.md` file in your repository. If you need any further assistance or modifications, please let me know!
