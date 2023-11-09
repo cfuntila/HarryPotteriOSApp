@@ -2,7 +2,6 @@
 
 Welcome to the Harry Potter iOS App repository! This app showcases a comprehensive list of characters, spells, and potions from the magical world of Harry Potter. Built with an emphasis on clean architecture and user experience, it's a testament to modern iOS development practices.
 
-![Example of Character Detail Page](Demo/character_detail_screenshot.png "Harry Potter Character Detail")
 
 ## Features
 
