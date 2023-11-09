@@ -23,7 +23,7 @@ final class HPCharacterFamilyMemberCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubviews(nameLabel)
+        contentView.addSubview(nameLabel)
         addConstraints()
     }
     

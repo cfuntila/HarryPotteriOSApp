@@ -31,10 +31,8 @@ final class HPRequest {
         var string = Constants.baseUrl
         string += "/"
         string += endpoint.rawValue
-        
-        for pathComponent in pathComponents {
-            string += "/" + pathComponent
-        }
+        string += "/"
+        string += pathComponents.joined(separator: "/")
         
         if !queryParameters.isEmpty {
             string += "?"

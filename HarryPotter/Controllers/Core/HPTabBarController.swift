@@ -7,6 +7,17 @@
 
 import UIKit
 
+
+final class HomeVC: UIViewController {
+
+    //MARK: - Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+
 // Top Controller containing tabs and their root view controllers
 final class HPTabBarController: UITabBarController {
 

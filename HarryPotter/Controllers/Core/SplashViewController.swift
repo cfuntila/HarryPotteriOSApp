@@ -9,11 +9,15 @@ import UIKit
 
 class SplashViewController: UIViewController {
     
+    //MARK: - Views
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 130, height: 130))
         imageView.image = UIImage(named: "hat")
         return imageView
     }()
+    
+    //MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +34,8 @@ class SplashViewController: UIViewController {
             self.animate()
         })
     }
+    
+    //MARK: - Helpers
     
     private func animate() {
         UIView.animate(withDuration: 1, animations: {

@@ -72,6 +72,7 @@ final class HPService {
     }
     
     //MARK: - Private
+    
     private func get_urlRequest(from hpRequest: HPRequest) -> URLRequest? {
         guard let url = hpRequest.url else {
             return nil

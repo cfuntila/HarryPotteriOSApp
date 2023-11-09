@@ -9,7 +9,7 @@ import UIKit
 
 class HPSpellDetailViewController: UIViewController {
     
-    //MARK: - Properties
+    //MARK: - Private Properties
     
     private let viewModel: HPSpellDetailViewViewModel
     private let detailView: HPSpellDetailView

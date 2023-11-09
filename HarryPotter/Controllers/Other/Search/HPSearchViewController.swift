@@ -32,20 +32,24 @@ final class HPSearchViewController: UIViewController {
        
     }
     
+    //MARK: - Private
+    
     private let searchView: HPSearchView
     private let viewModel: HPSearchViewViewModel
     
+    //MARK: - Init
+    
     init(config: Config) {
-         
         self.searchView = HPSearchView(frame: .zero, viewModel: HPSearchViewViewModel(config: config))
         self.viewModel = searchView.viewModel
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
     }
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +66,8 @@ final class HPSearchViewController: UIViewController {
         searchView.presentKeyboard()
     }
     
+    //MARK: - Private Helpers
+    
     @objc
     private func didTapExecuteSearch() {
 //        viewModel.executeSearch()
@@ -77,11 +83,14 @@ final class HPSearchViewController: UIViewController {
     }
 }
 
+//MARK: - HPSearchViewDelegate
 
 extension HPSearchViewController: HPSearchViewDelegate {
     func hpSearchView(_ searchView: HPSearchView, didSelectOption option: HPSearchInputViewViewModel.DynamicOption) {
         print("option selected from vc")
-        let vc = HPSearchOptionPickerViewController()
+        let vc = HPSearchOptionPickerViewController(option: option) { optionSelected in
+            print(optionSelected)
+        }
         vc.sheetPresentationController?.detents = [.medium()]
         vc.sheetPresentationController?.prefersGrabberVisible = true
         present(vc, animated: true)

@@ -1,5 +1,5 @@
 //
-//  Extentions.swift
+//  Extensions.swift
 //  HarryPotter
 //
 //  Created by Charity Funtila on 8/21/23.

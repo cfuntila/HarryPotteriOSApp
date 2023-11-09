@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+/// View Controller to show Potions
 class HPPotionViewController: UIViewController {
 
     //MARK: - Views

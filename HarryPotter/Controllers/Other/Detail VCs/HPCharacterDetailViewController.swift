@@ -11,7 +11,7 @@ import UIKit
 /// Controller to display the details of a character
 final class HPCharacterDetailViewController: UIViewController{
     
-    //MARK: - Properties
+    //MARK: - Private Properties
     
     private let viewModel: HPCharacterDetailViewViewModel
     private let detailView: HPCharacterDetailView

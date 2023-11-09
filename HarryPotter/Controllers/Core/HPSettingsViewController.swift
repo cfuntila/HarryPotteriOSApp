@@ -12,8 +12,12 @@ import UIKit
 
 class HPSettingsViewController: UIViewController {
     
+    //MARK: - Private properties
+    
     private var settingsSwiftUIController: UIHostingController<HPSettingsView>?
 
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -21,6 +25,8 @@ class HPSettingsViewController: UIViewController {
         addChildController()
         
     }
+    
+    //MARK: - Helpers
     
     private func addChildController() {
         let settingsSwiftUIController =  UIHostingController(

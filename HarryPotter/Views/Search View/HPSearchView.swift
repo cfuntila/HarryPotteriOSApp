@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol HPSearchViewDelegate: AnyObject {
+    func hpSearchView(_ searchView: HPSearchView, didSelectOption option: HPSearchInputViewViewModel.DynamicOption)
+}
+
 final class HPSearchView: UIView {
+    
+    public weak var delegate: HPSearchViewDelegate?
     
     let viewModel: HPSearchViewViewModel
     
@@ -31,7 +37,7 @@ final class HPSearchView: UIView {
         backgroundColor = .systemBackground
         addSubviews(searchInputView, noResultsView)
         addConstraints()
-        
+        searchInputView.delegate = self
         searchInputView.configure(with:  .init(type: viewModel.config.type))
     }
     
@@ -40,11 +46,21 @@ final class HPSearchView: UIView {
     }
     
     private func addConstraints() {
-        searchInputView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, height: 150)
+        searchInputView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, height: viewModel.config.type == .spell ? 50  : 100)
         noResultsView.setDimensions(width: 150, height: 150)
         noResultsView.center(inView: self)
     }
     
+    public func presentKeyboard() {
+        searchInputView.presentKeyboard() 
+    }
+    
+}
+
+extension HPSearchView: HPSearchInputViewDelegate {
+    func hpSearchInputView(_ inputView: HPSearchInputView, didSelectOption option: HPSearchInputViewViewModel.DynamicOption) {
+        delegate?.hpSearchView(self, didSelectOption: option)
+    }
 }
 
 //MARK: - CollectionView

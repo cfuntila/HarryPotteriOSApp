@@ -23,6 +23,7 @@ final class HPCharacterViewController: UIViewController {
         configureUI()
     }
     
+    
     //MARK: - Helpers
     
     /// Setup UI for controller when view loads

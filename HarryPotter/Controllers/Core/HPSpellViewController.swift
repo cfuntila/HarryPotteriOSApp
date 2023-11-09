@@ -21,13 +21,14 @@ final class HPSpellViewController: UIViewController {
         configureUI()
     }
     
+    
     //MARK: - Helpers
     
     private func configureUI() {
         title = Constants.Spell.title
         view.backgroundColor = .systemBackground
         view.addSubview(spellsListView)
-        spellsListView.delegate = self
+        spellsListView.delegate = self // 
         addConstraints()
         addSearchButton()
     }

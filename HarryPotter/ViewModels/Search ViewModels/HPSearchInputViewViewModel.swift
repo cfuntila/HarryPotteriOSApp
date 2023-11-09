@@ -14,6 +14,22 @@ final class HPSearchInputViewViewModel {
     public enum DynamicOption: String {
         case gender = "Gender"
         case potionDifficulty = "Potion Difficulty"
+        
+        var choices: [String] {
+            switch self {
+            case .gender:
+                return ["Male", "Female"]
+            case .potionDifficulty:
+                return ["Advanced",
+                        "Advanced or Beginner",
+                        "Beginner",
+                        "Beginner to Moderate",
+                        "Beginner to Ordinary Wizarding Level",
+                        "Moderate",
+                        "Moderate to Advanced",
+                ]
+            }
+        }
     }
     
     init(type: HPSearchViewController.Config.`Type`) {
