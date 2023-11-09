@@ -40,6 +40,7 @@ final class HPSearchViewController: UIViewController {
         self.searchView = HPSearchView(frame: .zero, viewModel: HPSearchViewViewModel(config: config))
         self.viewModel = searchView.viewModel
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -53,7 +54,13 @@ final class HPSearchViewController: UIViewController {
         view.addSubview(searchView)
         addConstraints()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .done, target: self, action: #selector(didTapExecuteSearch))
+        searchView.delegate = self
      }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchView.presentKeyboard()
+    }
     
     @objc
     private func didTapExecuteSearch() {
@@ -67,5 +74,16 @@ final class HPSearchViewController: UIViewController {
             left: view.safeAreaLayoutGuide.leftAnchor,
             right: view.safeAreaLayoutGuide.rightAnchor
         )
+    }
+}
+
+
+extension HPSearchViewController: HPSearchViewDelegate {
+    func hpSearchView(_ searchView: HPSearchView, didSelectOption option: HPSearchInputViewViewModel.DynamicOption) {
+        print("option selected from vc")
+        let vc = HPSearchOptionPickerViewController()
+        vc.sheetPresentationController?.detents = [.medium()]
+        vc.sheetPresentationController?.prefersGrabberVisible = true
+        present(vc, animated: true)
     }
 }
